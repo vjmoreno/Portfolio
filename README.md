@@ -1,14 +1,14 @@
 # :star2: Welcome to my portfolio :star2:
 #### Here you will find part of what I have developed through the years.
 
-### Odoo
+### :one: Odoo
 Module customizations, module developments and integrations.
 
-### Trading
+### :two: Trading
 Trading tool for crypto traders (Kucoin)
 
-### Web Scraping
+### :three: Web Scraping
 My first 2 projects scraping websites.
  
-### Image Processing 
+### :four: Image Processing 
 Image preprocessing, object detection, filters and much more.
