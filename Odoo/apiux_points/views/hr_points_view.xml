@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="view_form_apiux_points_form" model="ir.ui.view">
+			<field name="name">Apiux Points</field>
+			<field name="model">hr.points</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<group>
+							<field name='behavior'/>
+							<field name="holidays_id" attrs="{'invisible':[('behavior', '!=', 'Dia administrativo'),
+																			('behavior', '!=', 'Medio dia administrativo'),
+																			('behavior', '!=', 'Trabajo remoto'),
+																			('behavior', '!=', 'Compensatorios'),
+																			('behavior', '!=', 'Medio dia compensatorio')]}"/>
+
+							<field name='administrative_points' attrs="{'invisible':[('behavior', '!=', 'Dia administrativo'),
+																			('behavior', '!=', 'Medio dia administrativo'),
+																			('behavior', '!=', 'Trabajo remoto'),
+																			('behavior', '!=', 'Ano de contrato'),]}"/>
+
+							<field name='compensatory_points' attrs="{'invisible':[('behavior', '!=', 'Compensatorios'),
+																			('behavior', '!=', 'Medio dia compensatorio'),
+																			('behavior', '!=', 'Cumpleanos')]}"/>
+							<field name='employee_id'/>
+							<field name='date'/>
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record id="view_form_apiux_points_tree" model="ir.ui.view">
+			<field name="name">Apiux Points</field>
+			<field name="model">hr.points</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name='behavior'/>
+					<field name="holidays_id"/>
+					<field name='administrative_points' sum="Total puntos"/>
+					<field name='compensatory_points' sum="Total puntos"/>
+					<field name='employee_id'/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_form_apiux_points_search" model="ir.ui.view">
+			<field name="name">Apiux Points</field>
+			<field name="model">hr.points</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter name="puntos_propios" string="Puntos propios" domain="[('employee_id.user_id','=',uid)]" />
+					<filter name="group_employee_id" string="Agrupar por empleado" icon="terp-partner" context="{'group_by':'employee_id'}"/>
+				</search>
+			</field>
+		</record>
+		<act_window id="action_apiux_points" name="Puntos" res_model = "hr.points" view_mode="tree,form"/>
+		<menuitem id="menu_apiux_points" name="Puntos" action="action_apiux_points" sequence='3' parent="hr.menu_hr_root"/>
+		<menuitem id="submenu_apiux_points" name="Puntos" action="action_apiux_points" sequence='3' parent="menu_apiux_points"/>
+	</data>
+</openerp>
