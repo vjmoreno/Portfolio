@@ -1,7 +1,8 @@
 # Welcome to my portfolio
 #### Here you will find part of what I have developed through the years.
 
-## Odoo ### Module customizations, module developments and integrations.
+### Odoo
+Module customizations, module developments and integrations.
 
 ## Trading
 Trading tool for crypto traders (Kucoin)
