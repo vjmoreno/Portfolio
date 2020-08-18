@@ -58,3 +58,5 @@ to be completely processed. The program will start creating the folders ./Datase
 two folders will contain the images to classify. Once the program finishes the whole process, you will be able to find the screenshot in the
 folder ./Datasets/screenshots. Probably you will find false positives
 (no trucks classified as trucks).
+
+![image info](./readme_images/truck.png)
