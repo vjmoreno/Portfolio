@@ -8,11 +8,11 @@ CNN will classify the images in two classes: trucks and no trucks (everything
 that is not a truck). Once it is all classified, the screenshots are going to be
 saved.
 ### 2. Python 3.7 requirements
-• cv2
-• keras
-• numpy
-• os
-• time
+* cv2
+* keras
+* numpy
+* os
+* time
 ### 3. Performance
 The program has two different CNNs, one for the cars coming from the
 left and one from the right. The amount of images used for train, validate
@@ -22,9 +22,17 @@ Trucks / Right 320 70 80
 Trucks / Left 300 64 80
 No trucks / Right 650 100 100
 No trucks / Left 650 100 100
-Table 1:
-1
+
+Class / Direction | Train | Validation | test
+----------------- | ----- | ---------- | -----
+Trucks / Right | 320 | 70 | 80
+Trucks / Left | 300 | 64 | 80
+No trucks / Right | 650 | 100 | 100
+No trucks / Left | 650 | 100 | 100
+
+
 The confusion matrices obtained with the testing set are the following:
+
 Class No trucks Trucks
 No trucks 90 10
 No trucks 2 78
