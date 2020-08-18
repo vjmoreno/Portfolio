@@ -17,11 +17,6 @@ saved.
 The program has two different CNNs, one for the cars coming from the
 left and one from the right. The amount of images used for train, validate
 and test the CNNs is represented in the following table:
-Class/direction Train Validation Test
-Trucks / Right 320 70 80
-Trucks / Left 300 64 80
-No trucks / Right 650 100 100
-No trucks / Left 650 100 100
 
 Class / Direction | Train | Validation | test
 ----------------- | ----- | ---------- | -----
@@ -33,20 +28,27 @@ No trucks / Left | 650 | 100 | 100
 
 The confusion matrices obtained with the testing set are the following:
 
-Class No trucks Trucks
-No trucks 90 10
-No trucks 2 78
-Table 2: Confusion matrix - vehicles going to the right
-Class No trucks Trucks
-No trucks 94 6
-No trucks 2 78
-Table 3: Confusion matrix - vehicles going to the left
+#### Right:
+Class | No Trucks | Trucks
+----- | --------- | ------
+No trucks | 90 | 10
+No trucks | 2 | 78
+
+#### Left:
+Class | No Trucks | Trucks
+----- | --------- | ------
+No trucks right | 94 | 6
+No trucks right | 2 | 78
+
 Only 2.5% (2/80) of trucks are being classified as no trucks, and for every
 truck with tray, the program takes between 2-3 pictures, so the probability of
 a truck with tray to not get detected is at most 0.025*0.025*100 = 0.0625%.
 Of course, these are the results for just one video, and the performance may
 change.
+
+
 ### 4. Usage
+
 1. Make sure you downloaded the following files: main.py, tag.py, cnn.py,
 screenshots.py, new model left.h5 and new model right.h5. Store everything in the same folder.
 2. Put the video that you want to analyze in the same folder and run
@@ -56,12 +58,3 @@ to be completely processed. The program will start creating the folders ./Datase
 two folders will contain the images to classify. Once the program finishes the whole process, you will be able to find the screenshot in the
 folder ./Datasets/screenshots. Probably you will find false positives
 (no trucks classified as trucks).
-2
-### 5. Important
-If you want to double check the results after the program finishes, go to
-the folders ./Datasets/right box and ./Datasets/left box. The names of the
-images classified as trucks will start with ’truck’. All the images classified
-as trucks have created a screenshot. So, just check if there is a truck in the
-images that don’t start with ’truck’. The images names have the following
-format:
-direction hour minute second frame.jpg
