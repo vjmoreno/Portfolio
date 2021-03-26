@@ -6,7 +6,8 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
-		        <xpath expr="//page[@name='general_information']/group/group[2]/field[@name='list_price']" position="after">
+                <xpath expr="//page[@name='general_information']/group/group[2]/field[@name='list_price']"
+                       position="after">
                     <field name="company_price"/>
                 </xpath>
             </field>
@@ -19,8 +20,8 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_kanban_view"/>
             <field name="arch" type="xml">
-		        <xpath expr="//kanban/templates/t/div/div[2]/ul/li" position="after">
-                    <li>Company prices: </li>
+                <xpath expr="//kanban/templates/t/div/div[2]/ul/li" position="after">
+                    <li>Company prices:</li>
                     <field name="company_price"/>
                 </xpath>
             </field>

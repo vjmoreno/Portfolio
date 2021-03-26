@@ -1,96 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<data>
-    <template id="report_purchaseorder_document_inherit" inherit_id="purchase.report_purchaseorder_document">
-		<xpath expr="//div[@class='oe_structure']" position="after">	
-			<table class="table-condensed " width="100%">
-			 <t t-if="o.company_id.id==1">
-				<thead>
-							   <tr>
-									 <td colspan="2"><img class="img img-responsive" src="/apiux_purchase/static/src/img/apiux_logo.png"/></td>
-									 <td colspan="2"></td>									 
-							   </tr>					
-							   <tr>
-									 <th colspan="2"><strong>RAZON SOCIAL: APIUX TECNOLOGIA SPA</strong></th>
-									 <td colspan="2"></td>									 
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>R.U.T: 76.516.485-0</strong></th>								   
-									 <td colspan="2"></td>
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>DIRECCIÓN: MONS NUNCIO SOTERO SANZ 161 OF601 PROVIDENCIA</strong></th>									   
-									 <td colspan="2"></td>
-							   </tr>								   
-				</thead>
-			</t>
-			 <t t-if="o.company_id.id==6">
-				<thead>
-							   <tr>
-									 <td colspan="2"><img class="img img-responsive" src="/apiux_purchase/static/src/img/seryrec_logo.png"/></td>
-									 <td colspan="2"></td>									 
-							   </tr>					
-							   <tr>
-									 <th colspan="2"><strong>RAZON SOCIAL: SERVICIOS y RECURSOS TECHNOLOGICOS SPA</strong></th>
-									 <td colspan="2"></td>									 
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>R.U.T: 76.473.237-5</strong></th>								   
-									 <td colspan="2"></td>
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>DIRECCIÓN: MONS NUNCIO SOTERO SANZ 161 OF601 PROVIDENCIA</strong></th>									   
-									 <td colspan="2"></td>
-							   </tr>								   
-				</thead>
-			</t>
-			 <t t-if="o.company_id.id==13">
-				<thead>
-							   <tr>
-									 <td colspan="2"><img class="img img-responsive" src="/apiux_purchase/static/src/img/apiux_logo.png"/></td>
-									 <td colspan="2"></td>									 
-							   </tr>					
-							   <tr>
-									 <th colspan="2"><strong>RAZON SOCIAL: APIUX TECNOLOGIA PERU S.A.C</strong></th>
-									 <td colspan="2"></td>									 
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>R.U.C: 20602493068</strong></th>								   
-									 <td colspan="2"></td>
-							   </tr>
-							   <tr>
-									 <th colspan="2"><strong>DIRECCIÓN: JR. MONTE ROSA 233, SANTIAGO DE SUCRO, LIMA, PERU</strong></th>									   
-									 <td colspan="2"></td>
-							   </tr>								   
-				</thead>
-			</t>            
-			</table>
-			<table class="table-condensed" width="100%" >
-				<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-				<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			 </table>				
-		</xpath>
-	
-		<xpath expr="//div[@class='row mt32 mb32']" position="replace">
-            <div class="row mt32 mb32">
-                <div t-if="o.name" class="col-xs-2">
-                    <strong>Our Order Reference:</strong>
-                    <p t-field="o.name"/>
+    <data>
+        <template id="report_purchaseorder_document_inherit" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='oe_structure']" position="after">
+                <table class="table-condensed " width="100%">
+                    <t t-if="o.company_id.id==1">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <img class="img img-responsive"
+                                         src="/apiux_purchase/static/src/img/apiux_logo.png"/>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>RAZON SOCIAL: APIUX TECNOLOGIA SPA</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>R.U.T: 76.516.485-0</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>DIRECCIÓN: MONS NUNCIO SOTERO SANZ 161 OF601 PROVIDENCIA</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                        </thead>
+                    </t>
+                    <t t-if="o.company_id.id==6">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <img class="img img-responsive"
+                                         src="/apiux_purchase/static/src/img/seryrec_logo.png"/>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>RAZON SOCIAL: SERVICIOS y RECURSOS TECHNOLOGICOS SPA</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>R.U.T: 76.473.237-5</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>DIRECCIÓN: MONS NUNCIO SOTERO SANZ 161 OF601 PROVIDENCIA</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                        </thead>
+                    </t>
+                    <t t-if="o.company_id.id==13">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <img class="img img-responsive"
+                                         src="/apiux_purchase/static/src/img/apiux_logo.png"/>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>RAZON SOCIAL: APIUX TECNOLOGIA PERU S.A.C</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>R.U.C: 20602493068</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <strong>DIRECCIÓN: JR. MONTE ROSA 233, SANTIAGO DE SUCRO, LIMA, PERU</strong>
+                                </th>
+                                <td colspan="2"></td>
+                            </tr>
+                        </thead>
+                    </t>
+                </table>
+                <table class="table-condensed" width="100%">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </xpath>
+
+            <xpath expr="//div[@class='row mt32 mb32']" position="replace">
+                <div class="row mt32 mb32">
+                    <div t-if="o.name" class="col-xs-2">
+                        <strong>Our Order Reference:</strong>
+                        <p t-field="o.name"/>
+                    </div>
+                    <div t-if="o.partner_ref" class="col-xs-2">
+                        <strong>Your Order Reference</strong>
+                        <p t-field="o.partner_ref"/>
+                    </div>
+                    <div t-if="o.validator" class="col-xs-2">
+                        <strong>Validated By:</strong>
+                        <p t-field="o.validator"/>
+                    </div>
+                    <div t-if="o.employee_id" class="col-xs-2">
+                        <strong>Solicitado por:</strong>
+                        <p t-field="o.employee_id"/>
+                    </div>
                 </div>
-                <div t-if="o.partner_ref" class="col-xs-2">
-                    <strong>Your Order Reference</strong>
-                    <p t-field="o.partner_ref"/>
-                </div>
-                <div t-if="o.validator" class="col-xs-2">
-                    <strong>Validated By:</strong>
-                    <p t-field="o.validator"/>
-                </div>
-				<div t-if="o.employee_id" class="col-xs-2">
-					<strong>Solicitado por:</strong>
-					<p t-field="o.employee_id"/>
-				</div>				
-            </div>		
-		</xpath>
-	</template>
-</data>
+            </xpath>
+        </template>
+    </data>
 </openerp>			

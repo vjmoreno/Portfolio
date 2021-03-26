@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from odoo import models
-from datetime import datetime
 
 
 class PartnerXlsx(models.AbstractModel):

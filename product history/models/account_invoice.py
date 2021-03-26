@@ -2,7 +2,7 @@
 import calendar
 import datetime
 from dateutil.relativedelta import relativedelta
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 def days_in_month(first_day):

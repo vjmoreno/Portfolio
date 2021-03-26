@@ -1,63 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
-		<record id="apiux_purchase_order_form_workflow" model="ir.ui.view">
-         <field name="name">apiux.purchase.order.form.workflow</field>
-         <field name="model">purchase.order</field>
-			<field name="inherit_id" ref="purchase.purchase_order_form"/>
-         <field name="arch" type="xml">
-            <xpath expr="//button[@name='bid_received']" position="replace" />
-            <xpath expr="//button[@name='print_quotation']" position="replace" />
-            <xpath expr="//button[@name='print_quotation']" position="replace" />
-            <xpath expr="//button[@name='picking_ok']" position="replace" />
-            <xpath expr="//button[@name='invoice_ok']" position="replace" />
-            <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
-            <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
-            <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
-            <xpath expr="//field[@name='state']" position="attributes">
-               <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//button[@name='purchase_approve']" position="attributes">
-               <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//button[@name='purchase_confirm']" position="replace"/>
-            <xpath expr="//button[@name='purchase_confirm']" position="replace">
-               <button name="replace_wkf_approve_order" states="draft" string="Confirmar" type="object" groups="apiux_purchase.group_department_apiux_purchase"/>
-            </xpath>
-            <xpath expr="/form/header" position="inside">
-               <field name="is_solicitant" invisible="1"/>
-               <button name="approve_solicitant" string="Aprobar" type="object" attrs="{'invisible':['|', ('new_states', '!=', 'Ingresado'),('is_solicitant','!=',True)]}" class="oe_highlight"/>
-               <button name="approve_department" string="Aprobar" type="object" attrs="{'invisible':[('new_states', '!=', 'Aprobado por solicitante')]}" class="oe_highlight" groups="apiux_purchase.group_department_apiux_purchase"/>
-               <button name="approve_manager" string="Aprobar" type="object" attrs="{'invisible':['|',('new_states', '!=', 'Aprobado por jefe'),('state','!=','approved')]}" class="oe_highlight" groups="apiux_purchase.group_manager_apiux_purchase"/>
-               <field name='is_boss' invisible="1"/>
-               <button name="approve_boss" string="Aprobar" type="object" attrs="{'invisible':['|',('new_states', '!=', 'Aprobado por departamento'),('is_boss','=', False)]}" class="oe_highlight"/>
-            </xpath>
-            <xpath expr="//field[@name='state']" position="before">
-               <field name="new_states" widget="statusbar" statusbar_visible="Cancelado,Borrador,Ingresado,Aprobado por solicitante,Aprobado por departamento,Aprobado por jefe,Aprobado por gerente,Parcialmente facturado,Facturado" readonly="1"/>
-            </xpath>
-         </field>
-      </record>
-      <record id="apiux_purchase_order_form_workflow_cancel_button" model="ir.ui.view">
-         <field name="name">apiux.purchase.order.form.workflow_cancel_button</field>
-         <field name="model">purchase.order</field>
-         <field name="inherit_id" ref="apiux_account_payment.apiux_purchase_order_view_form"/>
-         <field name="arch" type="xml">
-            <xpath expr="//button[@name='service_received']" position="replace" />
-         </field>
-      </record>
-            <record id="apiux_purchase_order_form_workflow_new_cancel_button" model="ir.ui.view">
-         <field name="name">apiux.purchase.order.form.workflow_new_cancel_button</field>
-         <field name="model">purchase.order</field>
-         <field name="inherit_id" ref="apiux_account_payment.apiux_purchase_order_view_form"/>
-         <field name="arch" type="xml">
-            <xpath expr="//button[@name='new_action_cancel_draft']" position="replace">
-               <button name="replace_new_action_cancel_draft" states="cancel,sent,confirmed,done" string="Set to Draft" type="object" groups="apiux_purchase.group_department_apiux_purchase"/>
-            </xpath>
-            <xpath expr="//button[@name='new_action_cancel']" position="replace">
-               <button name="replace_new_action_cancel" states="draft,confirmed,sent,bid,approved,except_picking,except_invoice" string="Cancel" type="object"/>
-            </xpath>
-         </field>
-      </record>
+    <data>
+        <record id="apiux_purchase_order_form_workflow" model="ir.ui.view">
+            <field name="name">apiux.purchase.order.form.workflow</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='bid_received']" position="replace"/>
+                <xpath expr="//button[@name='print_quotation']" position="replace"/>
+                <xpath expr="//button[@name='print_quotation']" position="replace"/>
+                <xpath expr="//button[@name='picking_ok']" position="replace"/>
+                <xpath expr="//button[@name='invoice_ok']" position="replace"/>
+                <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
+                <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
+                <xpath expr="//button[@name='wkf_send_rfq']" position="replace"/>
+                <xpath expr="//field[@name='state']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='purchase_approve']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='purchase_confirm']" position="replace"/>
+                <xpath expr="//button[@name='purchase_confirm']" position="replace">
+                    <button name="replace_wkf_approve_order" states="draft" string="Confirmar" type="object"
+                            groups="apiux_purchase.group_department_apiux_purchase"/>
+                </xpath>
+                <xpath expr="/form/header" position="inside">
+                    <field name="is_solicitant" invisible="1"/>
+                    <button name="approve_solicitant" string="Aprobar" type="object"
+                            attrs="{'invisible':['|', ('new_states', '!=', 'Ingresado'),('is_solicitant','!=',True)]}"
+                            class="oe_highlight"/>
+                    <button name="approve_department" string="Aprobar" type="object"
+                            attrs="{'invisible':[('new_states', '!=', 'Aprobado por solicitante')]}"
+                            class="oe_highlight" groups="apiux_purchase.group_department_apiux_purchase"/>
+                    <button name="approve_manager" string="Aprobar" type="object"
+                            attrs="{'invisible':['|',('new_states', '!=', 'Aprobado por jefe'),('state','!=','approved')]}"
+                            class="oe_highlight" groups="apiux_purchase.group_manager_apiux_purchase"/>
+                    <field name='is_boss' invisible="1"/>
+                    <button name="approve_boss" string="Aprobar" type="object"
+                            attrs="{'invisible':['|',('new_states', '!=', 'Aprobado por departamento'),('is_boss','=', False)]}"
+                            class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="before">
+                    <field name="new_states" widget="statusbar"
+                           statusbar_visible="Cancelado,Borrador,Ingresado,Aprobado por solicitante,Aprobado por departamento,Aprobado por jefe,Aprobado por gerente,Parcialmente facturado,Facturado"
+                           readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="apiux_purchase_order_form_workflow_cancel_button" model="ir.ui.view">
+            <field name="name">apiux.purchase.order.form.workflow_cancel_button</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="apiux_account_payment.apiux_purchase_order_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='service_received']" position="replace"/>
+            </field>
+        </record>
+        <record id="apiux_purchase_order_form_workflow_new_cancel_button" model="ir.ui.view">
+            <field name="name">apiux.purchase.order.form.workflow_new_cancel_button</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="apiux_account_payment.apiux_purchase_order_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='new_action_cancel_draft']" position="replace">
+                    <button name="replace_new_action_cancel_draft" states="cancel,sent,confirmed,done"
+                            string="Set to Draft" type="object"
+                            groups="apiux_purchase.group_department_apiux_purchase"/>
+                </xpath>
+                <xpath expr="//button[@name='new_action_cancel']" position="replace">
+                    <button name="replace_new_action_cancel"
+                            states="draft,confirmed,sent,bid,approved,except_picking,except_invoice" string="Cancel"
+                            type="object"/>
+                </xpath>
+            </field>
+        </record>
 
-   </data>
+    </data>
 </openerp>

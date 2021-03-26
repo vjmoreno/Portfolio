@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
+from datetime import datetime, timedelta
 from odoo import api, fields, models
 import calendar
-from datetime import datetime, timedelta
 
 
 def compare_months(request_date_from, request_date_to):

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="apiux_billing_form" model="ir.ui.view">
+            <field name="name">account.pre.invoice</field>
+            <field name="model">account.pre_invoice</field>
+            <field name="inherit_id" ref="apiux_outsourcing.project_outsourcing_account_preinvoice_form_view_ext"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='hes']" position="replace"/>
+                <xpath expr="//field[@name='oc']" position="after">
+                    <field name="hes" attrs="{'readonly':[('projection_status','=','facturado')]}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="apiux_billing_wizzard" model="ir.ui.view">
+            <field name="name">project.invoice.wizard</field>
+            <field name="model">project.invoice.wizard</field>
+            <field name="inherit_id" ref="apiux_pr_ext.project_invoice_wizard_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='hes']" position="replace"/>
+                <xpath expr="//field[@name='oc']" position="replace"/>
+                <xpath expr="//field[@name='glosa']" position="after">
+                    <field name='oc'/>
+                    <field name="hes"/>
+                </xpath>
+                <xpath expr="//field[@name='is_tax_exempt']" position="after">
+                    <field name='document_type'/>
+                </xpath>
+            </field>
+        </record>
+        <record id="apiux_outsourcing_billing_wizzard" model="ir.ui.view">
+            <field name="name">apiux.outsourcing.billing.wizzard</field>
+            <field name="model">project.outsourcing.invoice.wizard</field>
+            <field name="inherit_id" ref="apiux_outsourcing.project_outsourcing_invoice_wizard_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_tax_exempt']" position="after">
+                    <field name="document_type"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

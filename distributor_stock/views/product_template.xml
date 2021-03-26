@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='113']" position="before">
                     <button type="object" class="oe_stat_button" icon="fa-building-o" sequence="1">
-                        <field name="major_distributor_stock" widget="statinfo" string="Distributor stock / Total stock"/>
+                        <field name="major_distributor_stock" widget="statinfo"
+                               string="Distributor stock / Total stock"/>
                     </button>
                 </xpath>
             </field>

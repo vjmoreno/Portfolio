@@ -1,29 +1,29 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
-		<record id="apiux_employe_points_form" model="ir.ui.view">
-			<field name="name">hr.employee.points</field>
-			<field name="model">hr.employee</field>
-			<field name="inherit_id" ref="apiux_nomina.apiux_nomina_hr_employee_form"/>
-			<field name="arch" type="xml">
-				<xpath expr="//field[@name='leave_ids']/.." position="after">
-					<page string="Puntos">
-						<field name='points_ids'>
-							<tree>
-								<field name='behavior'/>
-								<field name='administrative_points'/>
-								<field name='compensatory_points'/>
-							</tree>
-						</field>
-						<group>
-							<group>
-								<field name="total_administrative_points"  string="Total puntos administrativos"/>
-								<field name="total_compensatory_points"  string="Total puntos compensatorios"/>
-							</group>
-						</group>
-					</page>
-				</xpath>
-			</field>
-		</record>
-	</data>
+    <data>
+        <record id="apiux_employe_points_form" model="ir.ui.view">
+            <field name="name">hr.employee.points</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="apiux_nomina.apiux_nomina_hr_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='leave_ids']/.." position="after">
+                    <page string="Puntos">
+                        <field name='points_ids'>
+                            <tree>
+                                <field name='behavior'/>
+                                <field name='administrative_points'/>
+                                <field name='compensatory_points'/>
+                            </tree>
+                        </field>
+                        <group>
+                            <group>
+                                <field name="total_administrative_points" string="Total puntos administrativos"/>
+                                <field name="total_compensatory_points" string="Total puntos compensatorios"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </openerp>

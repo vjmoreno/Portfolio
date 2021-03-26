@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_history" model="ir.ui.view">
+            <field name="name">product.template.history</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook//page[@name='sales']/div//field[@name='item_ids']" position="after">
+                    <h2 style="color: #66667f;">History</h2>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="padding: 10px 15px">
+                                <table>
+                                    <tr>
+                                        <th style="padding: 4px 14px">Month</th>
+                                        <th style="padding: 4px 14px; text-align:center;">Sold / Purchased</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Current</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7">
+                                            <field name="sold_current_month"/>
+                                            /
+                                            <field name="purchased_current_month"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Last</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_last_month"/>
+                                            /
+                                            <field name="purchased_last_month"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Two</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7">
+                                            <field name="sold_two_month"/>
+                                            /
+                                            <field name="purchased_two_month"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Three</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_three_month"/>
+                                            /
+                                            <field name="purchased_three_month"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="padding: 10px 15px">
+                                <table>
+                                    <tr>
+                                        <th style="padding: 4px 14px">Quarter</th>
+                                        <th style="padding: 4px 14px; text-align:center;">Sold / Purchased</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Current</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7">
+                                            <field name="sold_current_cuarter"/>
+                                            /
+                                            <field name="purchased_current_cuarter"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Last</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_last_quarter"/>
+                                            /
+                                            <field name="purchased_last_quarter"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Two</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7">
+                                            <field name="sold_two_quarter"/>
+                                            /
+                                            <field name="purchased_two_quarter"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Three</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_three_quarter"/>
+                                            /
+                                            <field name="purchased_three_quarter"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="padding: 10px 15px">
+                                <table>
+                                    <tr>
+                                        <th style="padding: 4px 14px">Year</th>
+                                        <th style="padding: 4px 14px; text-align:center;">Sold / Purchased</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Current</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7">
+                                            <field name="sold_current_year"/>
+                                            /
+                                            <field name="purchased_current_year"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Last</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_last_year"/>
+                                            /
+                                            <field name="purchased_last_year"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px; background-color:#f7f7f7">
+                                            <b>Two</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center; background-color:#f7f7f7;">
+                                            <field name="sold_two_year"/>
+                                            /
+                                            <field name="purchased_two_year"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 4px 14px">
+                                            <b>Three</b>
+                                        </td>
+                                        <td style="padding: 4px 14px; text-align:center;">
+                                            <field name="sold_three_year"/>
+                                            /
+                                            <field name="purchased_three_year"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
