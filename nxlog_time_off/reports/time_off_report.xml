@@ -1,0 +1,10 @@
+<odoo>
+    <report
+        id="hr_leave_report_xlsx"
+        model="hr.leave.report"
+        string="Time off report"
+        report_type="xlsx"
+        name="nxlog_time_off.hr_leave_report"
+        file="hr_leave_report"
+    />
+</odoo>

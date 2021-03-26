@@ -1,0 +1,8 @@
+<odoo>
+    <record id="admin_user" model="ir.model.data">
+        <field name="name">admin_user</field>
+        <field name="module">base</field>
+        <field name="model">res.users</field>
+        <field name="res_id">22</field>
+    </record>
+</odoo>
