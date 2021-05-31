@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+auction_status_website_user,auction_website_user,auction_status.model_auction_status,base.group_user,1,1,1,1
+auction_status_website_public_user,auction_website_public_user,auction_status.model_auction_status,base.group_public,1,0,0,0
+auction_status_website_portal_user,auction_website_portal_user,auction_status.model_auction_status,base.group_portal,1,0,0,0

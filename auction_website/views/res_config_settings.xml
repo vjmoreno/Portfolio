@@ -1,0 +1,25 @@
+<odoo>
+    <record id="res_config_settings_auctions" model="ir.ui.view">
+        <field name="name">res.config.settings.auctions</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='languages']" position="after">
+                <div id="auctions">
+                    <h2>Auctions</h2>
+                    <div class="row mt16 o_settings_container" name="languages_setting_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="languages_setting">
+                            <div class="o_setting_right_pane">
+                                <div class="w-50">
+                                    <label for="auction_timezones" string="Timezone"/>
+                                    <field name="auction_timezones" class="oe_inline" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

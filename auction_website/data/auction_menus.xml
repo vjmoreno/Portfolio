@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="auctions_menu" model="website.menu">
+        <field name="name">Auctions</field>
+        <field name="url">/auctions</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">2</field>
+    </record>
+    <record id="past_auctions_menu" model="website.menu">
+        <field name="name">Past auctions</field>
+        <field name="url">/past-auctions</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">3</field>
+    </record>
+</odoo>

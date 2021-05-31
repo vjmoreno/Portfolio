@@ -1,0 +1,180 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* auction_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-14 20:01+0000\n"
+"PO-Revision-Date: 2021-01-14 20:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.product_template_auction
+msgid ""
+"<span attrs=\"{'invisible': [('pricelist_item_count', '=', 1)]}\">\n"
+"\t\t\t\t\t\t\tExtra Prices\n"
+"\t\t\t\t\t\t\t</span>\n"
+"\t\t\t\t\t\t\t<span attrs=\"{'invisible': [('pricelist_item_count', '!=', 1)]}\">\n"
+"\t\t\t\t\t\t\tExtra Price\n"
+"\t\t\t\t\t\t\t</span>"
+msgstr ""
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_product_product__auction_id
+#: model:ir.model.fields,field_description:auction_website.field_product_template__auction_id
+#: model_terms:ir.ui.view,arch_db:auction_website.auction_form_view
+#: model_terms:ir.ui.view,arch_db:auction_website.auction_tree_view
+msgid "Auction"
+msgstr "Subasta"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_product_product__auction_status_id
+#: model:ir.model.fields,field_description:auction_website.field_product_template__auction_status_id
+msgid "Auction Status"
+msgstr "Estados de las subastas"
+
+#. module: auction_website
+#: model:ir.actions.act_window,name:auction_website.auction_menuitem
+#: model:ir.ui.menu,name:auction_website.auction_menu
+msgid "Auctions"
+msgstr "Subastas"
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.auction_form_view
+#: model_terms:ir.ui.view,arch_db:auction_website.product_template_auction
+msgid "Base price"
+msgstr "Precio base"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__display_name
+#: model:ir.model.fields,field_description:auction_website.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__end_date
+msgid "End Date"
+msgstr "Fecha término"
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.auction_form_view
+#: model_terms:ir.ui.view,arch_db:auction_website.product_template_auction
+msgid "Estimated price"
+msgstr "Precio estimado"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__id
+#: model:ir.model.fields,field_description:auction_website.field_product_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__product_category_id
+msgid "Inventory category"
+msgstr "Categoría de inventario"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_product_product__is_auction
+#: model:ir.model.fields,field_description:auction_website.field_product_template__is_auction
+msgid "Is auction?"
+msgstr "Es una subasta?"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction____last_update
+#: model:ir.model.fields,field_description:auction_website.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.product_template_auction_id
+msgid "Lot #"
+msgstr "Lote"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__lot_ids
+msgid "Lots"
+msgstr "Lotes"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: auction_website
+#: model:ir.model,name:auction_website.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__start_date
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__auction_status_id
+msgid "Status"
+msgstr "Estado"
+
+#. module: auction_website
+#: code:addons/auction_website/models/auction.py:0
+#, python-format
+msgid ""
+"The ending date and time cannot be earlier than the starting date and time."
+msgstr ""
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.auction_form_view
+msgid "Title"
+msgstr "Título"
+
+#. module: auction_website
+#: model:ir.model.fields,field_description:auction_website.field_auction__product_public_category_id
+msgid "Website category"
+msgstr "Categoría del sitio web"
+
+#. module: auction_website
+#: model:ir.model,name:auction_website.model_auction
+msgid "auction"
+msgstr "subasta"
+
+#. module: auction_website
+#: model_terms:ir.ui.view,arch_db:auction_website.product_template_auction
+msgid "per"
+msgstr "por"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="auction_status_menuitem" model="ir.actions.act_window">
+        <field name="name">Auction Status</field>
+        <field name="res_model">auction.status</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem name="Auction status" id="auction_status_menu" parent="stock.menu_stock_inventory_control" sequence="4"
+              action="auction_status_menuitem" groups="base.group_user"/> -->
+
+</odoo>

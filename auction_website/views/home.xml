@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="auction_homepage">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+                <script type="text/javascript" src="/auction_website/static/src/js/auction_timer.js"/>
+                <div class="container oe_website_sale searchbox"> 
+                    <t t-call="auction_website.search">
+                        <t t-set="_classes" t-valuef="w-100 w-md-auto mt-2"/>
+                    </t>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <t t-if="len(in_process_auctions) > 0">
+                            <div class="col-md-12">
+                                <h1 class="auction-title">AUCTIONS IN PROCESS --- </h1>
+                            </div>
+                        </t>
+                        <div class="col-lg-12 auction-grid">
+                            <t t-foreach="in_process_auctions" t-as="auc">
+                                <t t-if="auc.auction_status_id.title != 'Unavailable'">
+                                    <t t-set="auc_href" t-value="auc.get_url()"/>
+                                    <div class="auction_card">
+                                        <a class="auction-link" t-att-href="auc_href" itemprop="url">
+                                            <span t-field="auc.image" t-options="{'widget': 'image'}"/>
+                                            <b>
+                                                <h4 t-esc="auc.name"/>
+                                            </b>
+                                             <p>Start Date:
+                                                <t t-esc="auc.get_formatted_start_date()"/>
+                                            </p>
+                                            <p>End Date:
+                                                <t t-esc="auc.get_formatted_end_date()"/>
+                                            </p>
+                                            <p>Quantity of items:
+                                                <t t-esc="auc.get_qty_of_lots()"/>
+                                            </p>
+                                            <button class="btn btn-primary time-button" type="button">
+                                                <span>
+                                                    <t t-esc="auc.get_formatted_date()"/>
+                                                </span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="margin-bottom: 50px;">
+                    <div class="row">
+                        <t t-if="len(future_auctions) > 0">
+                            <div class="col-md-12">
+                                <h1 class="auction-title">FUTURE AUCTIONS</h1>
+                            </div>
+                        </t>
+                        <div class="col-lg-12 auction-grid">
+                            <t t-foreach="future_auctions" t-as="auc">
+                                <t t-if="auc.auction_status_id.title != 'Unavailable'">
+                                    <t t-set="auc_href" t-value="auc.get_url()"/>
+                                    <div class="auction_card">
+                                        <a class="auction-link" t-att-href="auc_href" itemprop="url">
+                                            <span t-field="auc.image" t-options="{'widget': 'image'}"/>
+                                            <b>
+                                                <h4 t-esc="auc.name"/>
+                                            </b>
+                                             <p>Start Date:
+                                                <t t-esc="auc.start_date"
+                                                   t-options="{'widget': 'date', 'format': 'dd/MM/yyyy'}"/>
+                                            </p>
+                                             <p>End Date:
+                                                <t t-esc="auc.end_date"
+                                                   t-options="{'widget': 'date', 'format': 'dd/MM/yyyy'}"/>
+                                            </p>
+                                            <p>Quantity of items:
+                                                <t t-esc="len(auc.lot_ids)"/>
+                                            </p>
+                                        </a>
+                                        <button class="btn btn-primary time-button" type="button">
+                                            <span>
+                                                <t t-esc="auc.get_formatted_date()"/>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+            </div>
+        </t>
+    </template>
+</odoo>

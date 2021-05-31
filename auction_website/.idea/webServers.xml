@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5f1a513e-c48a-48e8-aa99-b4d22a86a973" name="auction">
+        <fileTransfer accessType="SFTP" host="34.209.219.115" port="22" sshConfigId="fb0f5b8b-ad13-44ab-95bd-a35c2da77979" sshConfig="ubuntu@34.209.219.115:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

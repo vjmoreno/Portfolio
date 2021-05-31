@@ -1,0 +1,233 @@
+body{
+    -webkit-animation: 1s ease 0s normal forwards 1 fadein;
+    animation: 1s ease 0s normal forwards 1 fadein;
+}
+
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+// Auction Card
+
+
+.auction_card{
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid var(--o-color-3);
+    transition: 0.4s;
+    padding: 10px;
+    text-align: left;
+
+    &:hover {
+        background-color: transparent;
+    box-shadow: none;
+    border-radius: 0px;
+    border: 1px solid var(--o-color-1);
+    }
+
+    h4{
+        text-transform: uppercase;
+        margin-top: 10px;
+        text-align: left;
+        font-size: 1.2rem;
+    }
+
+    p{
+        text-align: left;
+        margin-bottom: 4px;
+    }
+    img{
+        object-fit: cover;
+        width: 100%;
+        height: 18vh;
+    }
+    a.auction-link{
+        color:black;
+        text-align:center;
+        display:block;
+        &:hover{
+            text-decoration: none !important;
+            }
+    }
+}
+.auction-title{
+    font-weight: normal;
+    margin: 0px 0px 20px;
+    text-align:center;
+}
+.time-button{
+    width: 100% !important;
+    margin: 0 auto;
+    display: block;
+    border-radius: 1px;
+    pointer-events: none;
+}
+
+.auction-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 30px
+}
+
+// Atlas Styles
+
+// Buscador
+.searchbox {
+    // background: var(--o-color-3);
+    // margin: 0px !important;
+    // width: 100%;
+    // max-width: 100%;
+    padding: 40px 15px;
+}
+
+.auction_card button, .card button {
+    font-size: .9rem;
+    margin-top: 20px;
+    border-radius: 0px;
+    text-align: left;
+    background: var(--o-color-3);
+    border-color: var(--o-color-3);
+    color: var(--o-color-1);
+    width: 100%;
+}
+
+.card p.btn.btn-secondary {
+    width: 100%;
+}
+
+.product_price {
+    text-align: left;
+}
+
+h6.o_wsale_products_item_title {
+    text-transform: uppercase;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.oe_product_cart .oe_product_image img {
+    /* max-height: 100%; */
+    width: 100%;
+    /* float: left; */
+    /* height: 100%; */
+    object-fit: cover;
+    /* width: 100%; */
+    height: 12vw;
+}
+
+span.d-flex.h-100.justify-content-center.align-items-center {
+    height: auto !important;
+}
+a.d-block.h-100 {
+    height: auto !important;
+}
+
+.card-body.p-1.oe_product_image {
+    height: auto !important;
+    max-height: 13vw !important;
+}
+
+img.img.img-fluid.product_detail_img.mh-100 {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+#product_details ol {
+    list-style-type: decimal;
+    list-style: none;
+    padding: 0px;
+    margin-bottom: 20px;
+}
+
+section#product_detail {
+    margin-bottom: 40px;
+}
+
+.o_brand_promotion {
+    display: none !important;
+}
+
+button.btn.btn-primary.time-button {
+    border: 1px solid var(--o-color-3);
+    background: var(--o-color-3) !important;
+    background: var(--o-color-3);
+    border: 1px solid var(--o-color-3);
+    background: var(--o-color-3);
+    color: var(--o-color-1);
+}
+
+section#product_detail {
+    margin-bottom: 40px;
+    background: transparent;
+}
+
+.breadcrumb {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0px;
+}
+
+div#o-carousel-product {
+    border: 1px solid var(--o-color-3) !important;
+}
+
+h6.o_wsale_products_item_title p {
+    text-transform: none;
+    margin-top: 10px;
+    text-align: left;
+    font-size: inherit;
+}
+
+h6.o_wsale_products_item_title a {
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h6.o_wsale_products_item_title a {
+    text-align: left;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+h6.o_wsale_products_item_title  {
+    text-align: left;
+}
+
+form.card.oe_product_cart {
+    padding: 5px;
+    border-radius: 0px;
+}
+
+.oe_product_cart:hover {
+    box-shadow: none;
+    border-color: var(--o-color-1);
+    transition: .4;
+}
+
+.oe_product_cart:hover .o_wsale_product_information {
+    background-color: transparent !important;
+}
+
+.oe_product_cart .oe_product_image img {
+    width: 100%;
+    object-fit: cover;
+    height: 10vw;
+}

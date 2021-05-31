@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-extend="ImportView">
+        <t t-jquery="div.o_nocontent_help p:last" t-operation="replace">
+            <div style="border:black; border-width:1px; border-style:solid;">
+                <p>
+                    <b>Important:</b>
+                </p>
+                <p>
+                    If you are going to import lots (product.template model), please upload a CSV file named 'lots.csv'
+                    with the following columns: Title,Cost,Auction,Description,Published.
+                </p>
+                <p>
+                    There is no need to pair the columns with the model fields. Simply upload the file, click on 'Test',
+                    and
+                    if everything goes right, click on 'Import'.
+                </p>
+            </div>
+        </t>
+    </t>
+</templates>

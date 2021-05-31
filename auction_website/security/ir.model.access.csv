@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+auction_internal_user,auction_internal_user,auction_website.model_auction,base.group_user,1,1,1,1
+auction_public_user,auction_public_user,auction_website.model_auction,base.group_public,1,0,0,0
+auction_portal_user,auction_portal_user,auction_website.model_auction,base.group_portal,1,0,0,0
+bid_internal_user,bid_internal_user,auction_website.model_bid,base.group_user,1,1,1,1
+bid_public_user,bid_public_user,auction_website.model_bid,base.group_public,1,0,0,0
+bid_portal_user,bid_portal_user,auction_website.model_bid,base.group_portal,1,1,1,0
+product_product_portal_user,product_product_portal_user,product.model_product_product,base.group_portal,1,0,0,0

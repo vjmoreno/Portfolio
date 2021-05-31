@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="auction_home_page" model="website.page">
+        <field name="name">Auctions home</field>
+        <field name="website_published">True</field>
+        <field name="url">/</field>
+        <field name="view_id" ref="auction_website.auction_homepage"/>
+    </record>
+    <record id="auction_products_page" model="website.page">
+        <field name="name">Auctions shop</field>
+        <field name="website_published">True</field>
+        <field name="url">/auctions</field>
+        <field name="view_id" ref="auction_website.auctions"/>
+    </record>
+</odoo>

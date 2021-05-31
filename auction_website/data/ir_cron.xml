@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bid_email" model="ir.cron">
+        <field name="name">Bid email</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="code">
+recs = env['product.template'].search([])
+for rec in recs:
+    if rec.finalized() and rec.current_bid_id:
+        rec.check_payment_link_email()
+        </field>
+    </record>
+</odoo>

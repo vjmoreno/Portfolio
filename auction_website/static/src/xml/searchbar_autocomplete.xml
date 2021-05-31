@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-extend="website_sale.productsSearchBar.autocomplete" t-name="auction_website.autocomplete">
+        <t t-jquery="div.flex-shrink-0" position="replace">
+            <t t-if="product.auction_id and (product.get_standard_price(pricelist) > combination_info['price'])">
+                <t t-esc="product.get_standard_price(pricelist)"
+                   t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+            </t>
+            <t t-else="">
+                <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                    <p>
+                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </t>
+</templates>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Bid tree view -->
+    <record id="bid_tree_view" model="ir.ui.view">
+        <field name="name">bid.tree</field>
+        <field name="model">bid</field>
+        <field name="arch" type="xml">
+            <tree default_order='lot_end_date desc, state desc' string="Auction">
+                <field name="user_id"/>
+                <field name="value"/>
+                <field name="state"/>
+                <field name="auction_id"/>
+                <field name="lot_id"/>
+                <field name="auction_start_date"/>
+                <field name="lot_end_date"/>
+            </tree>
+        </field>
+    </record>
+    <!--Bid form view -->
+    <record id="bid_form_view" model="ir.ui.view">
+        <field name="name">bid.form</field>
+        <field name="model">bid</field>
+        <field name="arch" type="xml">
+            <form string="Auction">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                            <field name="lot_id" readonly="1"/>
+                            <field name="value" readonly="1"/>
+                            <field name="pricelist_id" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                            <field name="account_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--Bid search view -->
+    <record id="bid_search_view" model="ir.ui.view">
+        <field name="name">bid.search.view</field>
+        <field name="model">bid</field>
+        <field name="arch" type="xml">
+            <search string="Search Bids">
+                <filter name="assigned" string="Assigned" domain="[('state','=','assigned')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                <filter name="canceled" string="Canceled" domain="[('state','=','canceled')]"/>
+                <filter name="no_state" string="No state" domain="[('state','=',False)]"/>
+                <filter name="group_lot_id" string="Lot" icon="terp-partner" context="{'group_by':'lot_id'}"/>
+                <filter name="group_auction_id" string="Auction" icon="terp-partner"
+                        context="{'group_by':'auction_id'}"/>
+                <filter name="group_user_id" string="User" icon="terp-partner" context="{'group_by':'user_id'}"/>
+            </search>
+        </field>
+    </record>
+    <!--Auction menu items-->
+    <record id="bid_menuitem" model="ir.actions.act_window">
+        <field name="name">Bids</field>
+        <field name="res_model">bid</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem name="Bids" id="bid_menu" parent="stock.menu_stock_inventory_control" sequence="4" action="bid_menuitem"
+              groups="base.group_user"/>
+
+</odoo>

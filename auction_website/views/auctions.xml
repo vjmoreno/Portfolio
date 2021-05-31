@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="auction_website.auctions">
+        <t t-call="website.layout">
+        <div id="wrap">
+                <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+            <t t-set="additional_title">Auctions</t>
+            <div id="wrap" class="js_sale">
+                <script type="text/javascript" src="/auction_website/static/src/js/auction_timer.js"/>
+                <div class="container oe_website_sale searchbox">
+                    <t t-call="auction_website.search">
+                        <t t-set="_classes" t-valuef="w-100 w-md-auto mt-2"/>
+                    </t>
+                </div>
+                <div class="products_pager form-inline flex-md-nowrap justify-content-between justify-content-md-center">
+                    <t t-call="website_sale.pricelist_list">
+                        <t t-set="_classes" t-valuef="mt-2 ml-md-2"/>
+                    </t>
+                    <t t-if="is_search">
+                        <t t-call="website.pager">
+                            <t t-set="_classes" t-valuef="mt-2 ml-md-2"/>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <t t-call="auction_website.pager">
+                            <t t-set="_classes" t-valuef="mt-2 ml-md-2"/>
+                        </t>
+                    </t>
+                </div>
+                <div class="oe_structure oe_empty" id="oe_structure_website_sale_products_1"/>
+                <div class="container oe_website_sale searchbox">
+                    <div class="row o_wsale_products_main_row">
+                        <div t-if="enable_left_column" id="products_grid_before" class="col-lg-3"/>
+                        <div t-if="not is_search" class="col-lg-9 auction-grid">
+                            <t t-foreach="auctions" t-as="auc">
+                                <t t-if="auc.auction_status_id.title != 'Unavailable'">
+                                    <t t-set="auc_href" t-value="auc.get_url()"/>
+                                    <div class="auction_card">
+                                        <a class="auction-link" t-att-href="auc_href" itemprop="url">
+                                            <span t-field="auc.image" t-options="{'widget': 'image'}"/>
+                                            <p t-esc="auc.name"/>
+                                            <p>Start Date!:
+                                               <t t-esc="auc.get_formatted_start_date()"/>
+                                            </p>
+                                            <p>End Date:
+                                                <t t-esc="auc.get_formatted_end_date()"/>
+                                            </p>
+                                            <p>Quantity of items:
+                                                <t t-esc="auc.get_qty_of_lots()"/>
+                                            </p>
+                                        </a>
+                                        <button class="btn btn-primary time-button" type="button">
+                                            <span>
+                                                <t t-esc="auc.get_formatted_date()"/>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                        <div t-if="is_search" id="products_grid"
+                             t-attf-class="col #{'o_wsale_layout_list' if layout_mode == 'list' else ''}">
+                            <t t-if="category">
+                                <t t-set="editor_msg">Drag building blocks here to customize the header for "<t
+                                        t-esc="category.name"/>" category.
+                                </t>
+                                <div class="mb16" id="category_header" t-att-data-editor-message="editor_msg"
+                                     t-field="category.website_description"/>
+                            </t>
+                            <div t-if="bins" class="o_wsale_products_grid_table_wrapper">
+                                <table class="table table-borderless m-0" t-att-data-ppg="ppg" t-att-data-ppr="ppr">
+                                    <colgroup t-ignore="true">
+                                        <!-- Force the number of columns (useful when only one row of (x < ppr) products) -->
+                                        <col t-foreach="ppr" t-as="p"/>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr t-foreach="bins" t-as="tr_product">
+                                            <t t-foreach="tr_product" t-as="td_product">
+                                                <t t-if="td_product">
+                                                    <t t-set="product" t-value="td_product['product']"/>
+                                                    <!-- We use t-attf-class here to allow easier customization -->
+                                                    <td t-att-colspan="td_product['x'] != 1 and td_product['x']"
+                                                        t-att-rowspan="td_product['y'] != 1 and td_product['y']"
+                                                        t-attf-class="oe_product"
+                                                        t-att-data-ribbon-id="td_product['ribbon'].id">
+                                                        <div t-attf-class="o_wsale_product_grid_wrapper o_wsale_product_grid_wrapper_#{td_product['x']}_#{td_product['y']}">
+                                                            <t t-call="auction_website.products_item">
+                                                                <t t-set="product_image_big"
+                                                                   t-value="td_product['x'] + td_product['y'] &gt; 2"/>
+                                                            </t>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <td t-else=""/>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <t t-else="">
+                                <div class="text-center text-muted">
+                                    <t t-if="not search">
+                                        <h3 class="mt8">No product defined</h3>
+                                        <p t-if="category">No product defined in category "<strong
+                                                t-esc="category.display_name"/>".
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <h3 class="mt8">No results</h3>
+                                        <p>No results for "<strong t-esc="search"/>"
+                                            <t t-if="category">in category "<strong t-esc="category.display_name"/>"
+                                            </t>
+                                            .
+                                        </p>
+                                    </t>
+                                    <p t-ignore="true" groups="sales_team.group_sale_manager">Click <i>'New'</i> in the
+                                        top-right corner to create your first product.
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="products_pager form-inline justify-content-center py-3">
+                        <t t-call="website.pager"/>
+                    </div>
+                </div>
+                <div class="oe_structure oe_empty" id="oe_structure_website_sale_products_2"/>
+            </div>
+            <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+            </div>
+        </t>
+        
+    </template>
+
+    <template name="Search Box" t-name="auction_website.search" id="auction_website.search">
+        <t t-call="auction_website.website_sale_auctions_search_box">
+         <div id="wrap">
+                <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+            <t t-set="action" t-value="'/auctions'+ ('/category/'+slug(category)) if category else None"/>
+            <t t-if="attrib_values">
+                <t t-foreach="attrib_values" t-as="a">
+                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                </t>
+            </t>
+              <!-- === Snippets' area === -->
+                <div class="oe_structure"></div>
+            </div>
+        </t>
+    </template>
+
+    <template name="Auctions pager" t-name="auction_website.pager">
+        <ul t-if="pager_auctions['page_count'] &gt; 1" t-attf-class="#{ classname or '' } pagination m-0 #{_classes}"
+            t-att-style="style or None">
+            <li t-attf-class="page-item #{'disabled' if pager_auctions['page']['num'] == 1 else ''}">
+                <a t-att-href=" pager_auctions['page_previous']['url'] if pager_auctions['page']['num'] != 1 else None"
+                   t-attf-class="page-link #{extraLinkClass}">Prev
+                </a>
+            </li>
+            <t t-foreach="pager_auctions['pages']" t-as="page">
+                <li t-attf-class="page-item #{'active' if page['num'] == pager_auctions['page']['num'] else ''}">
+                    <a t-att-href="page['url']" t-attf-class="page-link #{extraLinkClass}" t-raw="page['num']"/>
+                </li>
+            </t>
+            <li t-attf-class="page-item #{'disabled' if pager_auctions['page']['num'] == pager_auctions['page_count'] else ''}">
+                <a t-att-href="pager_auctions['page_next']['url'] if pager_auctions['page']['num'] != pager_auctions['page_count'] else None"
+                   t-attf-class="page-link #{extraLinkClass}">Next
+                </a>
+            </li>
+        </ul>
+    </template>
+
+
+    <template inherit_id="website.website_search_box" primary="True"
+              id="auction_website.website_sale_auctions_search_box">
+        <xpath expr="//input[@name='search']" position="attributes">
+            <attribute name="data-limit">5</attribute>
+            <attribute name="data-display-description">true</attribute>
+            <attribute name="data-display-price">true</attribute>
+            <attribute name="data-display-image">true</attribute>
+        </xpath>
+        <xpath expr="//div[@role='search']" position="attributes">
+            <attribute name="t-attf-class" remove="#{_classes}" separator=" "/>
+        </xpath>
+        <xpath expr="//div[@role='search']" position="replace">
+            <form t-attf-class="o_wsale_products_searchbar_form o_wait_lazy_js #{_classes}"
+                  t-att-action="action if action else '/auctions'" method="get" t-att-data-snippet="_snippet">
+                <t>$0</t>
+                <input name="order" type="hidden" class="o_wsale_search_order_by" value=""/>
+                <t t-raw="0"/>
+            </form>
+        </xpath>
+        <xpath expr="." position="attributes">
+            <attribute name="t-name">auction_website.website_sale_auctions_search_box</attribute>
+        </xpath>
+    </template>
+
+    <template name="Category list" t-name="auction_website.categories_recursive"
+              id="auction_website.categories_recursive">
+        <li class="nav-item">
+            <a t-att-href="keep('/auctions/category/' + slug(c), category=0)"
+               t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+                <span t-field="c.name"/>
+            </a>
+            <ul t-if="c.child_id" class="nav nav-pills flex-column nav-hierarchy">
+                <t t-foreach="c.child_id" t-as="c">
+                    <t t-if="not search or c.id in search_categories_ids">
+                        <t t-call="auction_website.categories_recursive"/>
+                    </t>
+                </t>
+            </ul>
+        </li>
+    </template>
+
+    <template inherit_id="auction_website.auctions" id="auction_website.categories" active="False" customize_show="True"
+              name="eCommerce Categories">
+        <xpath expr="//div[@id='products_grid_before']" position="before">
+            <t t-set="enable_left_column" t-value="True"/>
+        </xpath>
+        <xpath expr="//div[@id='products_grid_before']" position="inside">
+            <button type="button" class="btn btn-link d-lg-none" data-target="#wsale_products_categories_collapse"
+                    data-toggle="collapse">
+                Show categories
+            </button>
+            <div class="collapse d-lg-block" id="wsale_products_categories_collapse">
+                <ul class="nav nav-pills flex-column mb-2">
+                    <li class="nav-item">
+                        <a t-if="not is_search" t-att-href="keep('/auctions', category=0)"
+                           t-attf-class="nav-link #{'' if category else 'active'} o_not_editable">All Auctions
+                        </a>
+                        <a t-if="is_search" t-att-href="keep('/auctions', category=0)"
+                           t-attf-class="nav-link #{'' if category else 'active'} o_not_editable">All Products
+                        </a>
+                    </li>
+                    <t t-foreach="categories" t-as="c">
+                        <t t-call="auction_website.categories_recursive"/>
+                    </t>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="auction_website.products_item" name="Auction website - Products item">
+        <t t-set="product_href"
+           t-value="keep(product.website_url, page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))"/>
+
+        <t t-set="combination_info"
+           t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+
+        <form action="/auctions/cart/update" method="post" class="card oe_product_cart"
+              t-att-data-publish="product.website_published and 'on' or 'off'" itemscope="itemscope"
+              itemtype="http://schema.org/Product">
+            <div class="card-body p-1 oe_product_image">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                    <span t-field="product.image_1920"
+                          t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                          class="d-flex h-100 justify-content-center align-items-center"/>
+                </a>
+            </div>
+            <div class="card-body p-0 text-center o_wsale_product_information">
+                <div class="p-2 o_wsale_product_information_text">
+                    <h6 class="o_wsale_products_item_title">
+                        <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                           t-field="product.name"/>
+                        <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                           class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                        </a>
+                    </h6>
+                    <t t-if="product.auction_id and (product.get_standard_price(pricelist) > combination_info['price'])">
+                        <t t-esc="product.get_standard_price(pricelist)"
+                           t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                    </t>
+                    <t t-else="">
+                        <div class="product_price" itemprop="offers" itemscope="itemscope"
+                             itemtype="http://schema.org/Offer">
+                            <p>
+                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                            </p>
+                        </div>
+                    </t>
+                </div>
+                <div class="o_wsale_product_btn"/>
+            </div>
+            <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
+            <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
+            <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
+            <span t-attf-class="o_ribbon #{bg_class}"
+                  t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                  t-raw="td_product['ribbon']['html'] or ''"/>
+        </form>
+    </template>
+
+    <template inherit_id="website_sale.products_item" id="auction_website.add_lots_base_price">
+        <xpath expr="//div[@class='product_price']" position="replace">
+            <t t-if="product.auction_id and (product.get_standard_price(pricelist) > combination_info['price'])">
+                <t t-esc="product.get_standard_price(pricelist)"
+                   t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+            </t>
+            <t t-else="">
+                <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                    <p>
+                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                    </p>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

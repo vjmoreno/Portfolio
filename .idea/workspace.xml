@@ -20,6 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -38,11 +39,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616772443244</updated>
-      <workItem from="1616772526988" duration="2559000" />
+      <workItem from="1616772526988" duration="3647000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1616940318923">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="306" key="FileChooserDialogImpl/0.0.1920.1040/-1920.44.1920.1040@-1920.44.1920.1040" timestamp="1616940012591" />
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/-1920.44.1920.1040@0.0.1920.1040" timestamp="1616940318923" />
+    <state x="448" y="188" key="SettingsEditor" timestamp="1616940290894">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="448" y="188" key="SettingsEditor/0.0.1920.1040/-1920.44.1920.1040@0.0.1920.1040" timestamp="1616940290894" />
   </component>
 </project>

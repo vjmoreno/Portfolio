@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <template inherit_id="website.website_search_box" id="auction_website.website_search_box">
+        <xpath expr="//div/input" position="replace">
+            <t t-if="_">
+                <input type="search" name="search" class="search-query form-control oe_search_box" t-att-placeholder="placeholder if placeholder else _('Search...')" t-att-value="search"/>
+            </t>
+            <t t-else="">
+                <input type="search" name="search" class="search-query form-control oe_search_box" t-att-placeholder="placeholder if placeholder else 'Search...'" t-att-value="search"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* auction_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-13 22:51+0000\n"
+"PO-Revision-Date: 2021-01-13 22:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: auction_status
+#: model:ir.actions.act_window,name:auction_status.auction_status_menuitem
+msgid "Auction Status"
+msgstr "Estados del remates"
+
+#. module: auction_status
+#: model:ir.ui.menu,name:auction_status.auction_status_menu
+msgid "Auction status"
+msgstr "Estados de remates"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__id
+msgid "ID"
+msgstr "ID"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: auction_status
+#: model:ir.model.fields,field_description:auction_status.field_auction_status__title
+msgid "Title"
+msgstr "Título"
+
+#. module: auction_status
+#: model:ir.model,name:auction_status.model_auction_status
+msgid "auction.status"
+msgstr ""

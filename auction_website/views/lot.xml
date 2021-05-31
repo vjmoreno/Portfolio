@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template name="Lot" track="1" t-name="auction_website.lot" id="auction_website.lot">
+        <t t-set="combination" t-value="product._get_first_possible_combination()"/>
+        <t t-set="combination_info"
+           t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+        <t t-set="product_variant" t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+        <script type="text/javascript" src="/auction_website/static/src/js/auction_timer.js"/>
+        <t t-if="product.auction_id.is_logged_in()">
+            <script type="text/javascript" src="/auction_website/static/src/js/bid.js"/>
+            <script type="text/javascript" src="/auction_website/static/src/js/bid_updater.js"/>
+        </t>
+        <t t-call="website.layout">
+            <div class="container oe_website_sale searchbox">
+                <t t-call="auction_website.search">
+                    <t t-set="_classes" t-valuef="w-100 w-md-auto mt-2"/>
+                </t>
+            </div>
+            <t t-set="additional_title" t-value="product.name"/>
+            <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
+                <section
+                        t-attf-class="container py-2 oe_website_sale #{'discount' if combination_info['has_discounted_price'] else ''}"
+                        id="product_detail" t-att-data-view-track="view_track and '1' or '0'">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a t-att-href="product.auction_id.get_url()">Lots</a>
+                                </li>
+                                <li t-if="category" class="breadcrumb-item">
+                                    <a t-att-href="keep('/auctions/category/%s' % slug(category), category=0)"
+                                       t-field="category.name"/>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <span t-field="product.name"/>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-8">
+                            <t t-call="website_sale.shop_product_carousel"/>
+                        </div>
+                        <div class="col-md-6 col-xl-4" id="product_details">
+                            <h1 itemprop="name" t-field="product.name">Product Name</h1>
+                            <span itemprop="url" style="display:none;" t-esc="product.website_url"/>
+                            <hr t-if="product.description_sale">
+                                <div>
+                                    <p t-field="product.description_sale" class="text-muted mt-3"
+                                       placeholder="A short description that will also appear on documents."/>
+                                    <div id="product_attributes_simple">
+                                        <hr t-if="sum([(1 if len(l.value_ids)==1 else 0) for l in product.attribute_line_ids])"/>
+                                        <p class="text-muted">
+                                            <t t-set="single_value_attributes"
+                                               t-value="product.valid_product_template_attribute_line_ids._prepare_single_value_for_display()"/>
+                                            <t t-foreach="single_value_attributes" t-as="attribute">
+                                                <span t-field="attribute.name"/>:
+                                                <t t-foreach="single_value_attributes[attribute]" t-as="ptal">
+                                                    <span t-field="ptal.product_template_value_ids._only_active().name"/>
+                                                    <t t-if="not ptal_last">,</t>
+                                                </t>
+                                                <br/>
+                                            </t>
+                                        </p>
+                                    </div>
+                                </div>
+                            </hr>
+                            <ol>
+                                <li>
+                                    <span itemprop="name" t-field="product.name">Product Name</span>
+                                </li>
+                                <li>Auction:
+                                    <span t-field="product.auction_id.name"
+                                          t-onclick="window.location.href=product.auction_id.get_url()"/>
+                                </li>
+                                <li>
+                                    <span t-esc="product.get_formatted_start_date().split(' ')[0] + ' - ' + product.get_formatted_end_date().split(' ')[0]"/>
+                                </li>
+                                <li>
+                                    <span>Base price:
+                                        <t t-esc="product.get_standard_price(pricelist)"
+                                           t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                    </span>
+                                </li>
+                                <t t-if="product.is_in_process()">
+                                    <li>
+                                        <span class="oe_price_h4 css_editable_mode_hidden" id="lot_price"
+                                              t-att-pricelist_id="pricelist.id" t-att-product_id="product.id"
+                                              t-att-currency_symbol="website.currency_id.symbol"
+                                              t-esc="'Oferta actual: ' + str(product.get_lot_price([], {'product_id': product.id, 'pricelist_id': pricelist.id})[0]) + ' ' + website.currency_id.symbol">
+                                        </span>
+                                    </li>
+                                </t>
+                            </ol>
+                            <p t-if="not product.active" class="alert alert-warning">This product is no longer
+                                available.
+                            </p>
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <t t-if="product.needs_timer() and product.active">
+                                            <div class="timer" t-att-id="product.id"
+                                                 t-att-value="product.get_countdown_time(product.id)[0]"
+                                                 t-att-now="product.auction_id.get_countdown_now()"
+                                                 t-att-is_logged_in="product.auction_id.is_logged_in()"
+                                                 t-att-is_in_process="product.is_in_process()" is_product="true">
+                                                <button class="btn btn-primary time-button"
+                                                        style="width: 100% !important"
+                                                        type="button">
+                                                    <span t-att-id="'time_' + str(product.id)">Loading</span>
+                                                </button>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <button class="btn btn-primary time-button"
+                                                    type="button">
+                                                <span>
+                                                    <t t-esc="product.get_formatted_date()"/>
+                                                </span>
+                                            </button>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <t t-if="product.auction_id.is_logged_in() and product.is_in_process() and product._is_add_to_cart_possible() and product.active and product.is_published">
+                                    <div class="products_pager form-inline flex-md-nowrap justify-content-between justify-content-md-center">
+                                        <tr>
+                                            <td style="height:21px !important;">
+                                                <span id="bid_span" style="font-size:14px"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control s_website_form_input"
+                                                       name="Amount"
+                                                       required="" id="bid_input" placeholder="Bid another amount"
+                                                       step=".01"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn-primary bid-button" type="button"
+                                                        t-att-id="product.id"
+                                                        t-att-pricelist_id="pricelist.id"
+                                                        style="width: 100% !important; margin-bottom: 4vh;pointer-events: none;">
+                                                    <span>Loading</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </t>
+                                <t t-if="not product.auction_id.is_logged_in() and product.is_in_process()">
+                                    <tr>
+                                        <td>
+                                            <a href="/web/login" class="btn btn-primary" type="button"
+                                                    style="width: 100% !important; margin-top: 4vh;">
+                                                <span>Login to bid</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <div itemprop="description" t-field="product.website_description" class="oe_structure oe_empty mt16"
+                     id="product_full_description"/>
+            </div>
+        </t>
+    </template>
+</odoo>

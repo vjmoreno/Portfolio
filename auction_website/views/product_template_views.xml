@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_auction_id" model="ir.ui.view">
+        <field name="name">product.template.auction.id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="auction_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_id" model="ir.ui.view">
+        <field name="name">product.template.auction.id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//h1[1]" position="after">
+                <h2>
+                    Lot #
+                    <field name="id"/>
+                </h2>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_auction_search" model="ir.ui.view">
+        <field name="name">product.template.auction.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//separator[1]" position="after">
+                <filter string="Auction not assigned" name="auction_id" domain="[('auction_id','=',False)]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_kanban_auction_id" model="ir.ui.view">
+        <field name="name">product.template.kanban.auction.id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='product_lst_price']" position="after">
+                <strong class="o_kanban_record_title">
+                    <field name="auction_id"/>
+                </strong>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_auction" model="ir.ui.view">
+        <field name="name">product.template.auction</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_standard_price']" position="replace">
+                <group name="group_standard_price" col="3">
+                    <!-- <div name="pricing"> -->
+                        <!-- no tengo idea este input, supongo que lo usa para mostrar u ocultar los otros -->
+                        <field name="auction_id" invisible="1"/>
+                        <field name="show_current_bid" invisible="1"/>
+                        <field name="show_lot_end_date" invisible="1"/>
+                        <field name="show_next_link_time" invisible="1"/>
+                        
+                        
+                        <!-- Label para input COST -->
+                        <!-- Lo quito, si no rompe todo el html, uso el atributo string del field standard_price -->
+                        <!-- <label string="Cost!" for="standard_price" groups="base.group_user"
+                               attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '!=', False)]}"
+                               style='font-weight:boldl;color:#cdeb6c;'/> -->
+                        
+                        <!-- Label para input BASE PRICE -->
+                        <!-- Lo quito, si no rompe todo el html, uso el atributo string del field standard_price -->
+                        <!-- <label string="Base price" for="standard_price" groups="base.group_user"
+                               attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '=', False)]}"
+                               style='font-weight:bold; color:#6c70eb;'/> -->
+                               
+                        <!-- Input para input cost, producto comun o base price si es subasta. Siempre se muestra lo que cambia son los labels.  -->
+                        <field string="Cost" name="standard_price" class="oe_inline" widget="monetary" 
+                               options="{'currency_field': 'cost_currency_id', 'field_digits': True}" attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '!=', False)]}"/>
+
+                        <field string="Base price" name="standard_price" class="oe_inline" widget="monetary" 
+                               options="{'currency_field': 'cost_currency_id', 'field_digits': True}" attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '=', False)]}"/>
+                        
+                         
+                        <!-- Label para current bid price (no tiene uso) -->
+                        <!-- <label string="Current bid price" for="list_price"
+                               attrs="{'invisible': [('auction_id', '=', False)]}" style='font-weight:bold'/> -->
+                        
+                        <!-- Input para SALES PRICE o lo pone read only si selecciona Auction (auction_id != False) -->
+                        <!-- <field name="list_price" class="oe_inline" widget="monetary" force_save="1"
+                               options="{'currency_field': 'currency_id', 'field_digits': True}"
+                               attrs="{'readonly': [('auction_id', '!=', False)]}"/> -->
+                        
+                        <!-- Label para input SALES PRICE, invisible si selecciona Auction  auction_id != False -->
+                        <!-- Lo quito, si no rompe todo el html, uso el atributo string del field list_price -->
+                        <!-- <label string="Sales price!" for="list_price" attrs="{'invisible': [('auction_id', '!=', False)]}"
+                               style='font-weight:bold;color:#eb8c6c'/> -->
+                               
+                        <!-- @cambio Input para SALES PRICE a invisible en vez de readonly si (auction_id != False) -->
+                        <field string="Sales price" name="list_price" class="oe_inline" widget="monetary" force_save="1"
+                               options="{'currency_field': 'currency_id', 'field_digits': True}"
+                               attrs="{'invisible': [('auction_id', '!=', False)]}"/>
+                        
+                        <!-- <div> -->
+                            <!-- <label string="Current bid" for="current_bid_id"
+                                   attrs="{'invisible': [('auction_id', '=', False)]}" style='font-weight:bold'/> -->
+                            <field string="Best bid" name="current_bid_id" class="oe_inline"
+                                   attrs="{'invisible': [('show_current_bid', '=', False)]}" domain="[('lot_id', '=', id)]"/>
+                                   
+                        <!-- </div> -->
+
+                        
+                        <!-- <div> -->
+                            <!-- <label string="End date" for="lot_end_date"
+                                   attrs="{'invisible': [('auction_id', '=', False)]}" style='font-weight:bold'/> -->
+                            <field string="End date" name="lot_end_date" class="oe_inline"
+                                   attrs="{'invisible': [('show_lot_end_date', '=', False)]}" readonly="1"/>
+                        <!-- </div> -->
+
+                        
+                        <!-- <div> -->
+                            <!-- <label string="Next link time" for="next_link_time"
+                                   attrs="{'invisible': [('auction_id', '=', False)]}" style='font-weight:bold'/> -->
+                            <field string="Next award date" name="next_link_time" class="oe_inline"
+                                   attrs="{'invisible': [('show_next_link_time', '=', False)]}" readonly="1"/>
+                        <!-- </div> -->
+                        
+                         <field string="Customer Taxes" class="oe_inline" name="taxes_id" widget="many2many_tags"
+                           context="{'default_type_tax_use':'sale', 'search_default_sale': 1, 'search_default_service': type == 'service', 'search_default_goods': type == 'consu'}"/>
+                        
+                        <button name="open_pricelist_rules" icon="fa-arrow-right" type="object"
+                                groups="product.group_product_pricelist">
+                            <field name="pricelist_item_count"
+                                   attrs="{'invisible': [('pricelist_item_count', '=', 0)]}"/>
+                            <span attrs="{'invisible': [('pricelist_item_count', '=', 1)]}">
+                                Extra Prices
+                            </span>
+                            <span attrs="{'invisible': [('pricelist_item_count', '!=', 1)]}">
+                                Extra Price
+                            </span>
+                        </button>
+                    <!-- div pricing -->
+                    <!-- </div> -->
+                    <!-- NO SE PARA QUE SIRVE el DIV -->
+                    <div name="standard_price_uom" groups="base.group_user" 
+                         attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}" class="o_row">
+                        <!-- Label para input COST -->
+                        <!-- <label for="standard_price" groups="base.group_user"
+                               attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '!=', False)]}"
+                               style='font-weight:boldl;color:#cdeb6c;'/> -->
+                        
+                        <!-- Label para input BASE PRICE -->
+                        <!-- <label string="Base price" for="standard_price" groups="base.group_user"
+                               attrs="{'invisible': ['&amp;','|',('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False), ('auction_id', '=', False)]}"
+                               style='font-weight:bold; color:#6c70eb;'/> -->
+                               
+                        <!-- Input para input cost, producto comun o base price si es subasta. Siempre se muestra lo que cambia son los labels.  -->
+                        <!-- <field name="standard_price" widget="monetary"
+                               options="{'currency_field': 'cost_currency_id', 'field_digits': True}"/> -->
+                        
+                        <span groups="uom.group_uom" class="oe_read_only">  
+                            <field name="uom_name"/>
+                        </span>
+                    </div>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="uom_id" groups="uom.group_uom" options="{'no_create': True}"/>
+                    <field name="uom_po_id" groups="uom.group_uom" options="{'no_create': True}"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="cost_currency_id" invisible="1"/>
+                    <field name="product_variant_id" invisible="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_bids" model="ir.ui.view">
+        <field name="name">product.template.bids</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='variants']" position="after">
+                <page string="Bids" name="bids" attrs="{'invisible': [('auction_id','=',False)]}">
+                    <field name="bid_ids" widget="many2many" readonly="1">
+                        <tree default_order='state desc, value desc'>
+                            <field name="user_id"/>
+                            <field name="value"/>
+                            <field name="state"/>
+                            <field name="auction_id"/>
+                            <field name="lot_id"/>
+                            <field name="auction_start_date"/>
+                            <field name="lot_end_date"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="34.209.219.115" id="fb0f5b8b-ad13-44ab-95bd-a35c2da77979" keyPath="C:\Users\vicho\Downloads\odoo_byatlas.ppk" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>

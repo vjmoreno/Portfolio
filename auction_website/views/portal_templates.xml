@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template inherit_id="sale.portal_my_home_sale" id="auction_website.portal_my_home" name="Show Lots">
+        <xpath expr="//t[@t-call='portal.portal_docs_entry'][2]" position="after">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Current lots</t>
+                <t t-set="url" t-value="'/my/current-lots'"/>
+                <t t-set="placeholder_count" t-value="'current_lots_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Assigned lots</t>
+                <t t-set="url" t-value="'/my/assigned-lots'"/>
+                <t t-set="placeholder_count" t-value="'assigned_lots_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Confirmed lots</t>
+                <t t-set="url" t-value="'/my/confirmed-lots'"/>
+                <t t-set="placeholder_count" t-value="'confirmed_lots_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="auction_website.portal_lots" t-name="title">
+        <t t-call="website.layout">
+            <t t-set="additional_title">
+                <t t-esc="title"/>
+            </t>
+            <div class="container">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <script type="text/javascript" src="/auction_website/static/src/js/auction_timer.js"/>
+                    <h1 class="auction-title">
+                        <t t-esc="title"/>
+                    </h1>
+                    <div class="auction-grid">
+                        <t t-foreach="lots" t-as="lot">
+                            <t t-set="lot_href" t-value="lot.get_url()"/>
+                            <t t-set="combination_info"
+                               t-value="lot._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                            <form class="card oe_product_cart"
+                                  t-att-data-publish="lot.website_published and 'on' or 'off'" itemscope="itemscope"
+                                  itemtype="http://schema.org/Product">
+                                <div class="card-body p-1 oe_product_image" style="min-height: 100px !important;">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <a t-att-href="lot_href" class="d-block h-100" itemprop="url">
+                                        <span t-field="lot.image_1920" t-options="{'widget': 'image'}"
+                                              class="d-flex h-100 justify-content-center align-items-center"
+                                              style="min-height: 100px !important;"/>
+                                    </a>
+                                </div>
+                                <div class="card-body p-0 text-center o_wsale_product_information">
+                                    <div class="p-2 o_wsale_product_information_text">
+                                        <h6 class="o_wsale_products_item_title">
+                                            <a itemprop="name" t-att-href="lot_href" t-att-content="lot.name"
+                                               t-field="lot.name"/>
+                                            <t t-if="lot.description_sale">
+                                                <p t-esc="lot.get_formatted_description_sale()"/>
+                                            </t>
+                                            <a role="button" t-if="not lot.website_published" t-att-href="lot_href"
+                                               class="btn btn-sm btn-danger" title="This product is unpublished.">
+                                                Unpublished
+                                            </a>
+                                        </h6>
+                                        <div class="product_price" itemprop="offers" itemscope="itemscope"
+                                             itemtype="http://schema.org/Offer">
+                                            Base price:
+                                            <t t-esc="lot.get_standard_price(pricelist)"
+                                               t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                            <span itemprop="priceCurrency" style="display:none;"
+                                                  t-esc="website.currency_id.name"/>
+                                            <p>
+                                                <t t-if="lot.auction_id.finalized()">Sold for:</t>
+                                                <t t-else="">Current bid:</t>
+                                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <span itemprop="price" style="display:none;"
+                                                      t-esc="combination_info['price']"/>
+                                                <span itemprop="priceCurrency" style="display:none;"
+                                                      t-esc="website.currency_id.name"/>
+                                            </p>
+                                            <t t-if="lot.auction_id.minutes_between_finalizations > 0">
+                                                <t t-if="lot.needs_timer()">
+                                                    <div class="timer" t-att-id="lot.id"
+                                                         t-att-value="lot.get_countdown_time(lot.id)[0]"
+                                                         t-att-now="lot.auction_id.get_countdown_now()"
+                                                         t-att-is_logged_in="False"
+                                                         t-att-is_in_process="lot.is_in_process()" is_product="true">
+                                                        <button class="btn btn-primary time-button"
+                                                                style="margin-bottom: 10px;" type="button">
+                                                            <span t-att-id="'time_' + str(lot.id)">Loading</span>
+                                                        </button>
+                                                    </div>
+
+                                                </t>
+                                                <t t-else="">
+                                                    <button class="btn btn-primary time-button"
+                                                            style="margin-bottom: 10px;" type="button">
+                                                        <span>
+                                                            <t t-esc="lot.get_formatted_date()"/>
+                                                        </span>
+                                                    </button>
+                                                </t>
+                                            </t>
+                                            <t t-else="">
+                                            </t>
+                                            <t t-if="lot.is_in_process()">
+                                                <a t-att-href="lot_href" style="text-decoration:none;color:white;">
+                                                    <p class="btn btn-secondary">Bid</p>
+                                                </a>
+                                            </t>
+                                            <t t-else="">
+                                                <a t-att-href="lot_href" style="text-decoration:none;color:white;">
+                                                    <span class="btn btn-secondary">See details</span>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template inherit_id="portal.portal_my_details" id="auction_website.portal_my_details">
+        <xpath expr="//div[@class='row']" position="inside">
+            <div t-attf-class="form-group #{error.get('identity_document') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="identity_document">Identity Document</label>
+                <input type="text" name="identity_document"
+                       t-attf-class="form-control #{error.get('identity_document') and 'is-invalid' or ''}"
+                       t-att-value="identity_document or partner.identity_document"/>
+            </div>
+            <div t-attf-class="form-group #{error.get('national_id_number') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="national_id_number">National ID number</label>
+                <input type="text" name="national_id_number"
+                       t-attf-class="form-control #{error.get('national_id_number') and 'is-invalid' or ''}"
+                       t-att-value="national_id_number or partner.national_id_number"/>
+            </div>
+            <div t-attf-class="form-group col-xl-6 form-inline">
+                <label class="col-form-label" for="newsletter" style="margin-right:2vw;">Newsletter</label>
+                <t t-if="partner.newsletter">
+                    <input type="checkbox" name="newsletter" t-attf-class="form-control"
+                           t-att-value="newsletter or partner.newsletter" checked="checked"/>
+                </t>
+                <t t-else="">
+                    <input type="checkbox" name="newsletter" t-attf-class="form-control"
+                           t-att-value="newsletter or partner.newsletter"/>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[6]" position="replace">
+            <div></div>
+        </xpath>
+        <xpath expr="//div[7]" position="replace">
+            <div t-attf-class="form-group #{error.get('mobile') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="mobile">Mobile</label>
+                <input type="tel" name="mobile"
+                       t-attf-class="form-control #{error.get('mobile') and 'is-invalid' or ''}"
+                       t-att-value="mobile or partner.mobile"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[10]" position="replace">
+            <div></div>
+        </xpath>
+        <xpath expr="//div[11]" position="replace">
+            <div></div>
+        </xpath>
+        <xpath expr="//div[13]" position="replace">
+            <div></div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Auction tree view -->
+    <record id="auction_tree_view" model="ir.ui.view">
+        <field name="name">auction.tree</field>
+        <field name="model">auction</field>
+        <field name="arch" type="xml">
+            <tree string="Auction" multi_edit="1">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="auction_status_id"/>
+            </tree>
+        </field>
+    </record>
+    <!--Auction form view -->
+    <record id="auction_form_view" model="ir.ui.view">
+        <field name="name">auction.form</field>
+        <field name="model">auction</field>
+        <field name="arch" type="xml">
+            <form string="Auction">
+                <sheet>
+                    <group>
+
+                        <group>
+                            <!-- <label for="name" string="Auction name"/> -->
+                            <field name="name" placeholder="Auction name" help="Ingrese el nombre que se muestra en el sitio web"/>
+                            <field name="description" placeholder="Auction description" help="Ingrese la descripción que se muestra en el sitio web"/>
+                            <field name="start_date" autocomplete="off" placeholder="Start date and time" help="Ingrese fecha y hora de inicio de la subasta"/>
+                            <field name="end_date" autocomplete="off" placeholder="End date and time" help="Ingrese fecha y hora de finalización de la subasta"/>
+                            <field name="minutes_between_finalizations" autocomplete="off" placeholder="Closing time between lots" help="Ingrese tiempo de cierre en minutos entre lotes o cero si no aplica"/>
+                            <field name="last_minutes" autocomplete="off" placeholder="Wait time for last bid" help="Ingrese tiempo de espera para última oferta en minutos o cero si no aplica"/>
+                            <field name="extra_minutes" autocomplete="off" placeholder="Extension time for last bid" help="Ingrese tiempo de extensión en minutos si aplica tiempo de espera o cero si no aplica"/>
+                            <field name="extra_price" autocomplete="off" placeholder="Added value to automatic bid" help="Ingrese valor agregado a la oferta automática de cada lote o cero si no aplica"/>
+                            <field name="time_between_payment_links" autocomplete="off" placeholder="Award link validity time" help="Ingrese tiempo de validez en minutos del link enviado a gandador de lote"/>
+                        </group>
+                        <group>
+                            <field name="product_category_id"/>
+                            <field name="product_public_category_id"/>
+                            <field name="auction_status_id"/>
+                            <field name="image" widget="image"/>
+
+                        </group>
+                        <field name="lot_ids" widget="many2many">
+                            <tree class="custom_class">
+                                <field string="Lot name" name="name"/>
+                                <field string="Current bid" name="list_price"/>
+                                <field string="Base price" name="standard_price"/>
+                                <field name="lot_end_date"/>
+                                <field name="responsible_id"/>
+                                <!-- <field name="default_code"/> -->
+                                <!-- <field name="qty_available"/> -->
+                                <!-- <field name="virtual_available"/> -->
+
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--Auction menu items-->
+    <record id="auction_menuitem" model="ir.actions.act_window">
+        <field name="name">Auctions</field>
+        <field name="res_model">auction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem name="Auctions" id="auction_menu" parent="stock.menu_stock_inventory_control" sequence="3" action="auction_menuitem" groups="base.group_user"/>
+
+</odoo>

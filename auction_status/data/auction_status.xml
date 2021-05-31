@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="auction.status" id="auction_process">
+            <field name="title">Process</field>
+        </record>
+        <record model="auction.status" id="auction_unavailable">
+            <field name="title">Unavailable</field>
+        </record>
+    </data>
+</odoo>
