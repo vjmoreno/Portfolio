@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="hr_employee_force_transition_wizard_form_view" model="ir.ui.view">
+            <field name="name">hr.employee.force.transition.wizard.form.view</field>
+            <field name="model">hr.employee.force.transition.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Force Transition">
+                    <group>
+                        <field name="employee_id" invisible="1"/>
+                        <field name="new_state" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="force_transition" string="Force Stage" type="object" class="btn-primary"/>
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="force_employee_transition_action" model="ir.actions.act_window">
+            <field name="name">Transition to</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.force.transition.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+</odoo>

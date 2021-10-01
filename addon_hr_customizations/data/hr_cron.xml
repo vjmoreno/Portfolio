@@ -1,0 +1,81 @@
+<odoo>
+    <data noupdate="1">
+        <record forcecreate="True" id="ir_cron_sync_upcoming_holidays" model="ir.cron">
+            <field name="name">Sync work locations' upcoming holidays</field>
+            <field name="model_id" ref="addon_hr_customizations.model_hr_employee_work_location"/>
+            <field name="state">code</field>
+            <field name="code">model.sync_upcoming_holidays()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record forcecreate="True" id="ir_cron_set_missing_timezones" model="ir.cron">
+            <field name="name">Add missing timezone information for already existing work locations and employee contact</field>
+            <field name="model_id" ref="addon_hr_customizations.model_hr_employee_work_location"/>
+            <field name="state">code</field>
+            <field name="code">model.set_unset_timezones()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record forcecreate="True" id="ir_cron_set_slack_user_flag" model="ir.cron">
+            <field name="name">Update slack user's flag based on his work location</field>
+            <field name="model_id" ref="addon_hr_customizations.model_hr_employee_work_location"/>
+            <field name="state">code</field>
+            <field name="code">model.update_slack_flags()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record forcecreate="True" id="ir_cron_set_employee_availability" model="ir.cron">
+            <field name="name">Set employee's availability today</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="state">code</field>
+            <field name="code">model.set_availability()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record forcecreate="True" id="ir_cron_recompute_employee_kanban_color" model="ir.cron">
+            <field name="name">Recompute employee kanban color</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="state">code</field>
+            <field name="code">model.recompute_employee_kanban_color()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record forcecreate="True" id="ir_cron_raise_employee_alerts" model="ir.cron">
+		    <field name="name">Run Employee Alerts</field>
+		    <field name="model_id" ref="addon_hr_customizations.model_hr_employee_alert"/>
+		    <field name="state">code</field>
+		    <field name="code">model.raise_employee_alert()</field>
+		    <field name="user_id" ref="base.user_root"/>
+		    <field name="interval_number">1</field>
+		    <field name="interval_type">days</field>
+		    <field name="numbercall">-1</field>
+		    <field name="nextcall" eval="datetime.now(pytz.timezone('US/Eastern')).strftime('%Y-%m-%d 23:59:59')" />
+		    <field eval="False" name="doall"/>
+	    </record>
+    </data>
+</odoo>

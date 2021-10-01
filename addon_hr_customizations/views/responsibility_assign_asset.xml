@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="tree view menu" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/views_utils.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/calendar_view.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/affected_employee.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/raise_alert_button.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/send_message_hide.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/export_hide.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/employee_actions.js"></script>
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/refresh_view.js"></script>
+            </xpath>
+            <xpath expr="//script[@src='/calendar/static/src/js/calendar_view.js']" position="replace">
+                <script type="text/javascript" src="/addon_hr_customizations/static/src/js/calendar_view_override.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

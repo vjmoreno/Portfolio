@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="maintenance_equipment_qr_code_id" model="ir.ui.view">
+        <field name="name">maintenance.equipment.qr.code.id</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="addon_equipment_movement.maintenance_sparepart_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[9]" position="after">
+                <field name="qr_code_id"
+                       domain="[('res_reference','=', False), ('status', '=', False)]"
+                       options="{'no_create_edit': True, 'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

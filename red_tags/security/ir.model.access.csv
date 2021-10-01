@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+item_type_internal_user,item_type_internal_user,red_tags.model_red_tag_item_type,base.group_user,1,0,0,0
+reason_internal_user,reason_internal_user,red_tags.model_red_tag_reason,base.group_user,1,0,0,0
+item_type_admin_user,item_type_admin_user,red_tags.model_red_tag_item_type,red_tags.group_admin,1,1,1,1
+reason_admin_user,reason_admin_user,red_tags.model_red_tag_reason,red_tags.group_admin,1,1,1,1
+red_tag_internal_user,red_tag_internal_user,red_tags.model_red_tag,base.group_user,1,1,1,1
+red_tag_transition_activity_internal_user,red_tag_transition_activity_internal_user,red_tags.model_red_tag_transition_activity,base.group_user,1,1,1,1

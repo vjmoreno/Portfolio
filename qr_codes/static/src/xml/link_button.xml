@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <t t-extend="ListView.buttons">
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+           <button t-if="widget.modelName == 'qr.code'" type="button" class="btn btn-secondary o_button_to_call_wizard">
+                Link
+           </button>
+        </t>
+    </t>
+</odoo>

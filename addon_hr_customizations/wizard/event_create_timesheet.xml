@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="create_timesheet_wizard_view_form" model="ir.ui.view">
+            <field name="name">event.create.timesheet.wizard.form</field>
+            <field name="model">event.create.timesheet.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Event">
+                    <group class="oe_title">
+                        <field name="google_event_id" invisible="1"/>
+                        <field name="name"/>
+                        <field name="duration" widget="float_time"/>
+                        <field name="project_id"/>
+                        <field name="task_id"/>
+                    </group>
+                    <footer>
+                        <button name="create_timesheet" string="Create" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="create_timesheet_wizard_action" model="ir.actions.act_window">
+            <field name="name">Add Timesheet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.create.timesheet.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_timesheet_wizard_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

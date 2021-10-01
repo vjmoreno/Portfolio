@@ -1,0 +1,13 @@
+<odoo>
+    <record model="ir.ui.view" id="google_event_calendar_view_timesheet">
+        <field name="name">google.event.calendar.timesheet</field>
+        <field name="model">google.event</field>
+        <field name="inherit_id" ref="addon_google_integration.google_event_calendar_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='owner_id']" position="after">
+                <field name="timesheet_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

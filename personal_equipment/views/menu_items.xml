@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="Personal Equipment"
+              id="personal_equipment.personal_equipment_main_menu"
+              web_icon="personal_equipment,static/description/icon.png"
+              groups="base.group_user"/>
+
+    <record id="personal_equipment.allocation_request_action" model="ir.actions.act_window">
+        <field name="name">Allocation requests</field>
+        <field name="res_model">allocation.request</field>
+        <field name="view_mode">form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+    (0, 0, {'view_mode': 'tree', 'view_id': ref('equipment_allocations.hr_equipment_allocation_request_view_tree')}),
+    (0, 0, {'view_mode': 'form', 'view_id': ref('personal_equipment.allocation_request_form_view')})]"/>
+    </record>
+
+    <menuitem name="Allocation Requests"
+              id="allocation_request_menu"
+              parent="personal_equipment.personal_equipment_main_menu"
+              sequence="1"
+              action="personal_equipment.allocation_request_action"
+              groups="base.group_user"/>
+</odoo>

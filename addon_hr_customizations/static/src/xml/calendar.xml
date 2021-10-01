@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+
+    <t t-extend="Calendar.attendee.status.popover">
+        <t t-jquery=".o_cw_popover_delete" t-operation="after">
+            <t t-if="!widget.has_timesheet and widget.modelName == 'google.event'">
+                <a href="#" class="btn btn-secondary o_cw_popover_timesheet">Create Timesheet</a>
+            </t>
+        </t>
+    </t>
+
+    <t t-extend="calendar-box">
+        <t t-jquery=".o_event_title" t-operation="before">
+            <i t-if="record.timesheet_id" class="fa fa-clock-o"/>
+        </t>
+    </t>
+
+    <t t-extend="KanbanView.buttons">
+        <t t-jquery="button" t-operation="replace">
+            <t t-if="widget and widget.modelName == 'hr.employee.alert'" t-name="EmployeeAlert.trigger_raise_employee_alert">
+                <button type="button" class="btn btn-primary o_button_raise_employee_alert">
+                    Run Alerts
+                </button>
+            </t>
+            <t t-elif="widget and widget.modelName == 'project.alert'" t-name="ProjectAlert.trigger_raise_project_alert">
+                <button type="button" class="btn btn-primary o_button_raise_project_alert">
+                    Run Alerts
+                </button>
+            </t>
+            <t t-else="">
+                <button type="button" class="btn btn-primary o-kanban-button-new" accesskey="c">
+                    Create
+                </button>
+            </t>
+        </t>
+    </t>
+    <t t-extend="ListView.buttons">
+        <t t-jquery="div.o_list_buttons" t-operation="append">
+            <t t-if="widget and widget.modelName == 'hr.employee.alert'" t-name="EmployeeAlert.trigger_raise_employee_alert">
+                <button type="button" class="btn btn-primary o_button_raise_employee_alert">
+                    Run Alerts
+                </button>
+            </t>
+            <t t-if="widget and widget.modelName == 'project.alert'" t-name="ProjectAlert.trigger_raise_project_alert">
+                <button type="button" class="btn btn-primary o_button_raise_project_alert">
+                    Run Alerts
+                </button>
+            </t>
+        </t>
+        <t t-jquery="button.o_list_export_xlsx" t-operation="replace">
+            <t t-if="widget and widget.modelName == 'hr.employee.alert'" t-name="EmployeeAlert.trigger_raise_employee_alert">
+            </t>
+            <t t-elif="widget and widget.modelName == 'project.alert'" t-name="ProjectAlert.trigger_raise_project_alert">
+            </t>
+            <t t-else="">
+                <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All"></button>
+            </t>
+        </t>
+    </t>
+</template>

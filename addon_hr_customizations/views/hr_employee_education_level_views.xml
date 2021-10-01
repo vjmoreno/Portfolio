@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="employee_education_level_search_view">
+            <field name="name">hr.employee.education.level.search</field>
+            <field name="model">hr.employee.education.level</field>
+            <field name="arch" type="xml">
+                <search string="Education levels">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_education_level_tree_view">
+            <field name="name">hr.employee.education.level.tree</field>
+            <field name="model">hr.employee.education.level</field>
+            <field name="arch" type="xml">
+                <tree string="Education levels" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_education_level_form_view">
+            <field name="name">hr.employee.education.level.form</field>
+            <field name="model">hr.employee.education.level</field>
+            <field name="arch" type="xml">
+                <form string="Education levels">
+                    <sheet string="Education level">
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="type"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employee_education_level_action">
+            <field name="name">Education levels</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.education.level</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_employee_education_levels" name="Education levels"
+                  action="employee_education_level_action" parent="hr.menu_human_resources_configuration"
+                  sequence="600"/>
+
+
+        <record model="ir.ui.view" id="hr_employee_education_level_form">
+            <field name="name">employee.education.level</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="addon_hr_customizations.view_employee_form_state"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='travel']" position="before">
+                    <page string="Education level">
+                        <group>
+                            <field name="education_level" options="{'no_create': True}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_education_level_filter">
+            <field name="name">hr.employee.education.level</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <field name="job_id" position="before">
+                    <field name="education_level"/>
+                </field>
+                <xpath expr="//group" position="inside">
+                    <filter name="group_state" string="Status" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_relationships" string="Relationship" domain="[]"
+                            context="{'group_by': 'relationships'}"/>
+                    <filter name="group_country_work_location" string="Country" domain="[]" context="{'group_by': 'country_work_location'}"/>
+                </xpath>
+                <!--				<filter name="inactive" position="before">-->
+                <!--                    <separator/>-->
+                <!--                        <filter string="Master Degree" name="master_degree" domain="[('education_level', '=', 'Master Degree')]"/>-->
+                <!--                        <filter string="PhD" name="phd" domain="[('education_level', '=', 'PhD')]"/>-->
+                <!--                    <separator/>-->
+                <!--				</filter>-->
+            </field>
+        </record>
+
+    </data>
+</odoo>

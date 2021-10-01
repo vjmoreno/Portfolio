@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="hr_employee_dietary_restriction_none" model="hr.employee.dietary.restriction">
+      <field name="name">None</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_diabetic" model="hr.employee.dietary.restriction">
+      <field name="name">Diabetic</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_gluten_free" model="hr.employee.dietary.restriction">
+      <field name="name">Gluten Free</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_kosher" model="hr.employee.dietary.restriction">
+      <field name="name">Kosher</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_no_lactose" model="hr.employee.dietary.restriction">
+      <field name="name">No Lactose</field>
+    </record>
+    <record id="hr_employee_dietary_restriction_vegan" model="hr.employee.dietary.restriction">
+      <field name="name">Vegan</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_vegetarian" model="hr.employee.dietary.restriction">
+      <field name="name">Vegetarian</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_asian_vegetarian" model="hr.employee.dietary.restriction">
+      <field name="name">Asian Vegetarian</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_infant_baby_food" model="hr.employee.dietary.restriction">
+      <field name="name">Infant/baby Food</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_bland_meal" model="hr.employee.dietary.restriction">
+      <field name="name">Bland Meal</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_child_meal" model="hr.employee.dietary.restriction">
+      <field name="name">Child Meal</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_hindu_non_vegetarian" model="hr.employee.dietary.restriction">
+      <field name="name">Hindu Non Vegetarian</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_moslem" model="hr.employee.dietary.restriction">
+      <field name="name">Moslem</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_fruit_platter" model="hr.employee.dietary.restriction">
+      <field name="name">Fruit Platter</field>
+    </record>
+
+
+    <record id="hr_employee_dietary_restriction_japanese_meal_lh_specific" model="hr.employee.dietary.restriction">
+      <field name="name">Japanese Meal (LH specific)</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_low_calories" model="hr.employee.dietary.restriction">
+      <field name="name">Low Calories</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_low_cholesterol_low_fat" model="hr.employee.dietary.restriction">
+      <field name="name">Low Cholesterol/Low Fat</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_low_sodium_no_salt_added" model="hr.employee.dietary.restriction">
+      <field name="name">Low Sodium, No Salt Added</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_no_fish_lh_specific" model="hr.employee.dietary.restriction">
+      <field name="name">No Fish (LH Specific)</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_japanese_obento_ua_specific" model="hr.employee.dietary.restriction">
+      <field name="name">Japanese Obento (UA Specific)</field>
+    </record>
+    <record id="hr_employee_dietary_restriction_oriental_meal" model="hr.employee.dietary.restriction">
+      <field name="name">Oriental Meal</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_raw_vegetarian" model="hr.employee.dietary.restriction">
+      <field name="name">Raw Vegetarian</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_seafood_meal" model="hr.employee.dietary.restriction">
+      <field name="name">Seafood Meal</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_special_meal_specify_food" model="hr.employee.dietary.restriction">
+      <field name="name">Special Meal, Specify Food</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_vegetarian_non_dairy" model="hr.employee.dietary.restriction">
+      <field name="name">Vegetarian, Non Dairy</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_lacto_ovo_vegetarian" model="hr.employee.dietary.restriction">
+      <field name="name">Lacto-Ovo-Vegetarian</field>
+    </record>
+
+    <record id="hr_employee_dietary_restriction_vegetarian_oriental" model="hr.employee.dietary.restriction">
+      <field name="name">Vegetarian Oriental</field>
+    </record>
+
+  </data>
+</odoo>

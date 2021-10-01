@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="hr_employee_equipment" model="ir.ui.view">
+            <field name="name">hr.employee.equipment</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="get_equipment" icon="fa-gears">
+                        <field string="Equipment" name="personal_equipment_count" widget="statinfo"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

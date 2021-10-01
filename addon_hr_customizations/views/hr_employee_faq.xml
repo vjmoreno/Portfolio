@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Action -->
+        <record id="employee_faq_action" model="ir.actions.act_window">
+            <field name="name">FAQs</field>
+            <field name="res_model">hr.employee.faq</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Views -->
+        <record id="employee_faq_view" model="ir.ui.view">
+            <field name="name">FAQ</field>
+            <field name="model">hr.employee.faq</field>
+            <field name="arch" type="xml">
+                <form string="FAQs">
+                    <sheet>
+                        <group>
+                            <field name="question"/>
+                            <field name="answer"/>
+                            <field name="is_published"/>
+                            <field name="tags_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="employee_faq_tree_view" model="ir.ui.view">
+            <field name="name">FAQ</field>
+            <field name="model">hr.employee.faq</field>
+            <field name="arch" type="xml">
+                <tree string="FAQs Tree">
+                    <field name="sequence" widget="handle"/>
+                    <field name="question"/>
+                    <field name="answer"/>
+                    <field name="is_published"/>
+                    <field name="tags_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="faq_menu"  parent="hr.menu_hr_root"  name="FAQs"
+                  sequence="80"/>
+        <menuitem id="menu_action_hr_employee_faq_form_view" action="employee_faq_action" parent="faq_menu"  name="FAQs"
+                  sequence="1"/>
+</odoo>

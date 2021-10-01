@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <menuitem id="hr_employee_dietary_restriction_categ"
+              name="Dietary Restrictions"
+              parent="hr.menu_human_resources_configuration"
+              action="hr_employee_dietary_restriction_action"
+              sequence="150"/>
+
+    <menuitem id="hr_loyalty_program_menu"
+              name="Frequent Flyer Program"
+              parent="hr.menu_human_resources_configuration"
+              action="hr_loyalty_program_action"
+              sequence="160"/>
+  </data>
+
+</odoo>

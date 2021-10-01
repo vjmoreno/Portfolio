@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="hr_employee_citizenship_documents_form_view">
+            <field name="name">hr.employee.citizenship.documents.form.view</field>
+            <field name="model">hr.employee.citizenship</field>
+            <field name="arch" type="xml">
+                <form string="Citizenship Document">
+                        <group>
+                            <field name="citizenship"/>
+                        </group>
+                        <group col="4" colspan="2">
+                            <field name="passport_number"/>
+                            <field name="country_id"/>
+                            <field name="issued_date"/>
+                            <field name="expiry_date"/>
+                            <field name="is_international"/>
+                        </group>
+                        <group>
+                            <label for="document_name" string="Document"/>
+                            <div class="o_row">
+                                <field name="document_name"/>
+                                <button name="action_show_document" icon="fa-external-link"
+                                    type="object" title="View Document"/>
+                            </div>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_citizenship_documents_form_view_wizard">
+            <field name="name">hr.employee.citizenship.documents.form.view.wizard</field>
+            <field name="model">hr.employee.citizenship</field>
+            <field name="arch" type="xml">
+                <form string="Citizenship Document">
+                        <group>
+                            <field name="citizenship"/>
+                        </group>
+                        <group col="4" colspan="2">
+                            <field name="passport_number"/>
+                            <field name="country_id"/>
+                            <field name="issued_date"/>
+                            <field name="expiry_date"/>
+                            <field name="is_international"/>
+                        </group>
+
+                        <group col="4">
+                            <label for="document_file"/>
+                            <field name="document_file"  nolabel="1" widget="binary" class="oe_inline" filename="document_name"/>
+                            <div colspan="2" class="text-muted">Upload document. Only pdf files are allowed.</div>
+                        </group>
+                <footer>
+                    <button name="add_document" string="Save" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

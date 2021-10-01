@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="hr_employee_activate_wizard_form_view" model="ir.ui.view">
+            <field name="name">hr_employee_activate_wizard.form_view</field>
+            <field name="model">hr.employee.activate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Activate Employee">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" style="min-height:44px;padding:10px">
+                            <h2 class="text-center"><span></span>Activate Employee Wizard
+                            </h2>
+                            <h4 class="text-center"> Step <field name="wizard_step" class="oe_inline"
+                                                                 readonly="1"/> of 4 </h4>
+                        </div>
+                        <div attrs="{'invisible': [('wizard_step','!=',1)]}">
+                            <h3>
+                                <span>
+                                    You are about to activate <field name="full_name" class="oe_inline" readonly="1"/>
+                                    as an employee at Nanoramic with the following start date
+                                </span>
+                            </h3>
+                            <div class="o_row" style="margin:30px;">
+                                <h2><span style="margin:30px;">Date Start</span><field name="date_start"
+                                                                                       required="True"/></h2>
+                            </div>
+                            <h3>
+                                <span>
+                                    If you have a boarding process active for this employee,
+                                    all the tasks conditioned to start at activation will transition to To Do stage
+                                </span>
+                            </h3>
+                        </div>
+                        <group attrs="{'invisible': [('wizard_step','!=',2)]}">
+                                <field name="department_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="company_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="relationships" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="parent_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="birthday"/>
+                        </group>
+                        <div attrs="{'invisible': [('wizard_step','!=',3)]}">
+                             <h3>
+                                <span>
+                                    Activation will create a work user in odoo with this work email
+                                </span>
+                            </h3>
+                            <h2 style="margin:30px;">
+                                <div class="o_row" style="margin:30px;">
+                                    <field name="mail" required="True"/>
+                                    <span style="margin:30px;">@</span>
+                                    <field name="nanoramic_mail_domain" required="True"
+                                     options="{'no_quick_create': True,'no_create': True, 'no_create_edit': True,
+                                               'no_open':True, 'no_edit':True}"/>
+                                </div>
+                            </h2>
+                            <h3>
+                                <span>
+                                    This email will be used to provision users in all external systems that can
+                                    be automatically provisioned by the boarding app. The first user will be
+                                    a google email in the Nanoramic account. The second will be a slack user
+                                </span>
+                            </h3>
+                        </div>
+                        <div attrs="{'invisible': [('wizard_step','!=',4)]}">
+                             <h3>
+                                <span>
+                                     We will send an email to  <field name="private_email" class="oe_inline" readonly="1"/>
+                                    informing the user that a nanoramic email was created for them and they can now
+                                    login to the boarding and employee portal with google
+                                </span>
+                            </h3>
+                            <h2 style="margin:30px;">
+                                <field name="mail_template" widget="html"/>
+                            </h2>
+                            <h3 style="text-align: right;">
+                                <field name="skip_mail"/>
+                                <label for="skip_mail"/>
+                            </h3>
+                        </div>
+                        <footer>
+                            <div class="row">
+                                <div class="col-9">
+                                </div>
+                                <div class="col-3">
+                                    <button name="back_step" type="object" string=" &lt; Back"
+                                            class="btn btn-secondary" style="float:left;min-width:100px"
+                                            attrs="{'invisible': [('wizard_step', '=', 1)]}"/>
+                                    <button name="next_step" type="object" string="Next"
+                                            class="oe_highlight" style="float:right;min-width:100px"
+                                            attrs="{'invisible': [('wizard_step', '=', 4)]}"/>
+                                    <button name="activate_employee" type="object" string="Activate"
+                                            class="oe_highlight" style="float:right"
+                                            attrs="{'invisible': [('wizard_step', '!=', 4)]}"/>
+                                </div>
+                            </div>
+                        </footer>
+                    </sheet>
+                    <style>
+                        .o_form_button_save, .o_form_button_cancel{
+                        display:none;
+                        }
+                    </style>
+                </form>
+            </field>
+        </record>
+
+        <!-- Inherit Kanban View to Modify it -->
+
+        <record id="activate_employee_action" model="ir.actions.act_window">
+            <field name="name">Activate Employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.activate.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+</odoo>

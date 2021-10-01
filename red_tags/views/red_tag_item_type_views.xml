@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="red_tag_item_type_tree_view" model="ir.ui.view">
+        <field name="name">red.tag.item.type.tree</field>
+        <field name="model">red.tag.item.type</field>
+        <field name="arch" type="xml">
+            <tree string="Item Types">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="red_tag_item_type_form_view" model="ir.ui.view">
+        <field name="name">red.tag.item.type.form</field>
+        <field name="model">red.tag.item.type</field>
+        <field name="arch" type="xml">
+            <form string="Item Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

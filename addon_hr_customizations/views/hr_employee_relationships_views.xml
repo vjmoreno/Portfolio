@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="hr_employee_relationships_search_view">
+            <field name="name">hr.employee.relationships.search</field>
+            <field name="model">hr.employee.relationships</field>
+            <field name="arch" type="xml">
+                <search string="Relationships">
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_relationships_tree_view">
+            <field name="name">hr.employee.relationships.tree</field>
+            <field name="model">hr.employee.relationships</field>
+            <field name="arch" type="xml">
+                <tree string="Relationships" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_relationships_form_view">
+            <field name="name">hr.employee.relationships.form</field>
+            <field name="model">hr.employee.relationships</field>
+            <field name="arch" type="xml">
+                <form string="Relationships">
+                    <sheet string="Relationship">
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employee_relationships_action">
+            <field name="name">Relationships</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.relationships</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_employee_relationships" name="Relationships" action="employee_relationships_action"
+                  parent="hr.menu_human_resources_configuration" sequence="500"/>
+
+        <record id="employee_relationships_form_inherit" model="ir.ui.view">
+            <field name="name">employee.relationships.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="mobile_phone" position="before">
+                    <field name="relationships" options="{'no_create': True}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="employee_relationships_search_inherit" model="ir.ui.view">
+            <field name="name">employee.relationships.search.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <field name="job_id" position="before">
+                    <field name="relationships"/>
+                </field>
+                <searchpanel>
+                    <field name="relationships"/>
+                    <field name="education_level"/>
+                </searchpanel>
+                <xpath expr="//group" position="inside">
+                    <filter name="state" string="Status" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="relationships" string="Relationships" domain="[]" context="{'group_by': 'relationships'}"/>
+                    <filter name="country_work_location" string="Country" domain="[]" context="{'group_by': 'country_work_location'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="employee_relationships_kanban_inherit">
+            <field name="name">employee.relationships.kanban.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban[@class='o_hr_employee_kanban']" position="inside">
+                    <field name="relationships"/>
+                    <field name="state"/>
+                <progressbar field="state"
+                                 colors='{"draft": "success", "onboarding": "warning", "active": "danger"}'/>
+                </xpath>
+                <field name="work_phone" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <xpath expr="//field[@name='category_ids']" position="before">
+                   <div class="o_row">
+                    <div t-if="record.relationships.raw_value">
+                      <span class="fas fa-handshake" role="img"/>
+                      <field name="relationships"/>
+                    </div>
+                  </div>
+                </xpath>
+                <xpath expr="//kanban" position="inside">
+                    <progressbar field="state"
+                                 colors='{"draft": "success", "terminated": "warning", "active": "danger"}'/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="employee_filter_hide_with_contract_warning">
+            <field name="name">employee.filter.contract.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_employee_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='with_contract_warning']" position="replace"></xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="employee_filter_hide_is_absent">
+            <field name="name">employee.filter.holiday.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_holidays.hr_employee_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='is_absent']" position="replace"></xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

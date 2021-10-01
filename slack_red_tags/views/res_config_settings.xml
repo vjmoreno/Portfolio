@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_config_settings_view_form">
+            <field name="name">res.config.settings.slack.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="mail.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Red Tags" string="Red Tags" data-key="red_tags">
+                        <h2>Red Tags</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <label for="red_tags_slack_channel" />
+                                <field name="red_tags_slack_channel" nolabel="1" />
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="red_tags_res_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Slack configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'red_tags'}</field>
+        </record>
+        <menuitem name="Slack configuration"
+              id="slack_configuration_menu"
+              parent="red_tags.configuration_menu"
+              sequence="4"
+              action="red_tags_res_config_settings_action"
+              groups="red_tags.group_admin"/>
+    </data>
+</odoo>

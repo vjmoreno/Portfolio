@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+        <!-- Search View -->
+		<record model="ir.ui.view" id="employee_work_location_search_view">
+			<field name="name">hr.employee.work.location.search</field>
+			<field name="model">hr.employee.work.location</field>
+			<field name="arch" type="xml">
+				<search string="Work Locations">
+					<group>
+						<field name="country_id" select="1"/>
+						<field name="state_id"/>
+						<field name="zipcode"/>
+                        <field name="city"/>
+                        <field name="street"/>
+                        <field name="tz"/>
+                        <separator/>
+
+                        <filter name="groupby_country" string="Country" context="{'group_by': 'country_id'}"/>
+                        <filter name="groupby_tz" string="Timezone" context="{'group_by': 'tz'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<!-- Tree View -->
+		<record model="ir.ui.view" id="employee_work_location_tree_view">
+			<field name="name">hr.employee.work.location.tree</field>
+			<field name="model">hr.employee.work.location</field>
+			<field name="arch" type="xml">
+				<tree string="On Site Work Locations">
+                    <field name="name"/>
+					<field name="country_id"/>
+					<field name="state_id"/>
+					<field name="zipcode"/>
+					<field name="city"/>
+					<field name="street"/>
+                    <field name="tz"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Form View -->
+		<record model="ir.ui.view" id="employee_work_location_form_view">
+			<field name="name">hr.employee.work.location.form</field>
+			<field name="model">hr.employee.work.location</field>
+			<field name="arch" type="xml">
+				<form string="Work Locations">
+                    <sheet>
+                        <h1><field name="name"/></h1>
+                        <group string="Address">
+                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                   options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                       
+                            <label for="" name="address_name">
+                                Address
+                            </label>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}"
+                                       domain="[('country_id', '=', country_id)]"/>
+                                <field name="zipcode" placeholder="ZIP" class="o_address_zip"/>
+                            </div>
+                            <field name="employee_id" invisible="1"/>
+                            <field name="tz" readonly="1"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="longitude" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="latitude" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action -->
+		<record id="employee_work_location_action" model="ir.actions.act_window">
+			<field name="name">On Site Work Locations</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.employee.work.location</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+        <menuitem
+            id="menu_hr_employee_work_locations"
+            name="On Site Work Locations"
+            action="employee_work_location_action"
+            parent="hr.menu_human_resources_configuration"
+            sequence="500"
+        />
+
+
+        <!-- Adding work location on employee form -->
+        <record id="view_employee_form_work_location" model="ir.ui.view">
+            <field name="name">hr.employee.work.location.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                 <field name="job_title" position="replace">
+                    <field name="job_title" placeholder="Title"/>
+                </field>
+                <field name="work_location" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="address_id" position="replace">
+                    <field name="is_remote" widget="boolean_toggle"/>
+                    <field name="work_location_id" attrs="{'invisible': [('is_remote', '=', True)]}"/>
+                    <field name="address_id" invisible="1"/>
+                    <field name="country_work_location" invisible="1"/>
+                    <field name="state_work_location" invisible="1"/>
+                    <field name="work_location_tz"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

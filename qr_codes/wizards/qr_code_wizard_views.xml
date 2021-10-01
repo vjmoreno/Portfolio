@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="qr_code_wizard_view" model="ir.ui.view">
+        <field name="name">qr.code.wizard.view</field>
+        <field name="model">qr.code.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Link QR code">
+                <group>
+                    <group>
+                        <field name="res_reference"
+                               domain="[('qr_code_id','=', False)]"
+                               options="{'no_create_edit': True, 'no_create': True}"/>
+                        <field name="qr_code"
+                               domain="[('res_reference','=', False), ('status', '=', False)]"
+                               options="{'no_create_edit': True, 'no_create': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="link_qr_code" string="Link" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

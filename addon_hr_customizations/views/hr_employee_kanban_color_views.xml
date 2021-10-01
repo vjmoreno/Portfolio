@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_employee_color_kanban_view">
+            <field name="name">employee.color.kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban[@class='o_hr_employee_kanban']" position="inside">
+                    <field name="kanban_color"/>
+                </xpath>
+                <xpath expr="//div[@class='oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record']" position="attributes">
+                    <attribute name="t-attf-style">background-color:#{record.kanban_color.raw_value}</attribute>
+                </xpath>
+                <xpath expr="//div[@class='o_kanban_image_fill_left d-none d-md-block']" position="attributes">
+                    <attribute name="style">'background-color: transparent;'</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

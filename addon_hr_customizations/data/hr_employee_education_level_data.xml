@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="employee_education_level_1" model="hr.employee.education.level">
+        <field name="name">PhD</field>
+    </record>
+
+    <record id="employee_education_level_2" model="hr.employee.education.level">
+        <field name="name">Master Degree</field>
+    </record>
+    
+</odoo>

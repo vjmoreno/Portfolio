@@ -1,0 +1,39 @@
+<odoo>
+    <record id="hr_timesheet.act_hr_timesheet_line" model="ir.actions.act_window">
+        <field name="name">My Timesheets</field>
+        <field name="res_model">account.analytic.line</field>
+        <field name="view_mode">tree,grid,form</field>
+        <field name="context">{
+            'grid_anchor': (datetime.date.today()).strftime('%Y-%m-%d'),
+        }</field>
+    </record>
+
+    <record id="timesheet_grid.timesheet_action_view_grid" model="ir.actions.act_window.view">
+        <field name="sequence" eval="5"/>
+        <field name="view_mode">grid</field>
+        <field name="view_id" ref="timesheet_grid.timesheet_view_grid_by_project"/>
+        <field name="act_window_id" ref="hr_timesheet.act_hr_timesheet_line"/>
+    </record>
+
+    <record id="account_analytic_line_event_tree" model="ir.ui.view">
+        <field name="name">account.analytic.line.event.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr = "//field[@name='company_id']" position="before">
+                <field name="google_event_id" readonly="1" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_form2_inherited_event" model="ir.ui.view">
+        <field name="name">view.task.form2.event.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='company_id']" position="before">
+                <field name="google_event_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

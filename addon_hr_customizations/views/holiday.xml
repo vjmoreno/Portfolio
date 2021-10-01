@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+        <record id="holidays_holiday_kanban_view" model="ir.ui.view">
+            <field name="name">holidays.holiday.kanban.affected.employees.view</field>
+            <field name="model">holidays.holiday</field>
+            <field name="inherit_id" ref="addon_holidays.holidays_holiday_kanban_view"/>
+            <field name="arch" type="xml">
+                <field name="holiday_date_str" position="after">
+                    <field name="affected_employees_count"/>
+                </field>
+                <xpath expr="//kanban/templates/t/div//li[last()]" position="after">
+                    <li t-if="record.affected_employees_count.raw_value">
+                        <button name="see_affected_employees" type="object" class="btn oe_link">
+                            <field name="affected_employees_count"/> employee(s) affected
+                        </button>
+                    </li>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="holidays_holiday_tree_view" model="ir.ui.view">
+            <field name="name">holidays.holiday.tree.affected.employees.view</field>
+            <field name="model">holidays.holiday</field>
+            <field name="inherit_id" ref="addon_holidays.holidays_holiday_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="is_public" position="after">
+                    <field name="affected_employees_count_str" widget="affected_employee_widget"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.server" id="holidays_holiday_affected_employee_action">
+            <field name="name">Holidays</field>
+            <field name="model_id" ref="addon_holidays.model_holidays_holiday"/>
+            <field name="state">code</field>
+            <field name="code">
+record = model.browse(env.context.get('params').get('id'))
+action = record.see_affected_employees()
+            </field>
+        </record>
+
+    </data>
+</odoo>

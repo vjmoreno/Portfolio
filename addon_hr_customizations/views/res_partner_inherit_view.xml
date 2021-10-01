@@ -1,0 +1,20 @@
+<?xml  version="1.0"?>
+<odoo>
+    <data>
+        <record id="res_partner_view_form_private_inherit" model="ir.ui.view">
+            <field name="name">res.partner.view.form.private.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_view_form_private"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group[2]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="tz"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

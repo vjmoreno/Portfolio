@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Email template for user assignment -->
+        <record id="assignment_email" model="mail.template">
+            <field name="name">Responsibility Assignment</field>
+            <field name="model_id" ref="addon_hr_customizations.model_hr_employee_responsibility"/>
+            <field name="subject">Odoo Responsibility Assignment</field>
+            <field name="email_from">"${object.env.user.company_id.name | safe}" &lt;${(object.env.user.company_id.email) | safe}&gt;</field>
+            <field name="email_to">${ctx['email_to'] | safe}</field>
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+
+    <!-- CONTENT -->
+    <tr>
+        <td style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                    <div>
+                        Hi ${ctx['user_name']},<br/><br/>
+                        <i>${object.create_uid.partner_id.name}</i> has assigned 
+                        % if ctx['assignee'] == 'you':
+                             ${ctx['assignee']}
+                        % else:
+                        <i>${ctx['assignee']}</i> 
+                        % endif                      
+                         following responsibility:<br/>
+                        <i>${object.responsibility_id.name}</i> as <i>${ctx['backup_value']}</i> starting on <i>${object.start_date}</i> 
+                        % if object.end_date:
+                           and ending on <i>${object.end_date}</i>
+                        % endif
+                        <br/> 
+                        <div style="margin: 16px 0px 16px 0px; text-align: center;">
+                            <a href="${ctx['assignment_url']}"
+                                style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                Go to assignment
+                            </a>
+                        </div>
+                        Best regards<br/>
+                        <br/> 
+                        <br/> 
+                    </div>
+            </table>
+        </td>
+    </tr>
+</tbody>
+
+
+</table>
+            </field>
+            <field name="user_signature" eval="False"/>
+        </record>
+
+    </data>
+
+
+
+ <data>
+        <template id="mail_notification_light">
+            <t t-set="base_url" t-value="record.get_base_url()"/>
+            <t t-set="access_url" t-value="base_url" />
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tr><td align="center">
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 24px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+    <!-- HEADER -->
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: white; padding: 0; border-collapse:separate;">
+                <tr><td valign="middle">
+                </td><td valign="middle" align="right">
+                    <img t-att-src="'/logo.png?company=%s' % company.id" style="padding: 0px; margin: 0px; height: 48px;" t-att-alt="'%s' % company.name"/>
+                </td></tr>
+                <tr><td colspan="2" style="text-align:center;">
+                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 32px 0px;"/>
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+    <!-- CONTENT -->
+    <tr>
+        <td style="min-width: 590px;">
+            <t t-raw="message.body"/>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr>
+
+<tr><td align="center" style="min-width: 590px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+      <tr><td style="text-align: center; font-size: 13px;">
+      </td></tr>
+    </table>
+</td></tr>
+</table>
+        </template>
+        </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml  version="1.0"?>
+<odoo>
+    <record id="employee_activities_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.activity.wizard.form</field>
+        <field name="model">hr.employee.activities.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Employee Activites">
+                <group class="oe_title">
+                    <P>We will automatically assign to its supervisor all pending activities assigned to this
+                        employee</P>
+                </group>
+                <footer>
+                    <button name="action_transition" string="Ok" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="employee_activities_wizard" model="ir.actions.act_window">
+        <field name="name">Employee Activities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.activities.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="employee_activities_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

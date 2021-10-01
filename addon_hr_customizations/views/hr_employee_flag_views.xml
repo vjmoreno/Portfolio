@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_employee_flag_kanban_view">
+            <field name="name">employee.flag.kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban[@class='o_hr_employee_kanban']" position="inside">
+                    <field name="flag"/>
+                </xpath>
+                <xpath expr="//kanban[@class='o_hr_employee_kanban']" position="attributes">
+                    <attribute name="records_draggable">0</attribute>
+                </xpath>
+                <xpath expr="//span[@name='presence_present']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//span[@name='presence_absent']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//span[@name='presence_to_define']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//div[@class='oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record']//field[@name='image_128']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//div[@class='oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record']//field[@name='image_128']"
+                       position="after">
+                    <div class="o_kanban_image_fill_left d-none d-md-block"
+                         t-attf-style="background-image:url('#{kanban_image('hr.employee', 'image_128', record.id.raw_value,  placeholder)}')">
+                        <div class="img_23"/>
+                        <img class="o_kanban_image_inner_pic" t-if="record.flag.raw_value" t-att-alt="record.flag.value"
+                             t-att-src="kanban_image('hr.employee', 'flag', record.id.raw_value)"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_flag_form_view">
+            <field name="name">employee.flag.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="image_1920" position="after">
+                    <span t-if="record.flag.raw_value">
+                        <field name="flag" widget="image"
+                               class="oe_avatar oe_right"
+                               options="{&quot;preview_image&quot;: &quot;flag&quot;, &quot;size&quot;: [30, 30]}"/>
+                    </span>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_employee_contract_kanban_view">
+            <field name="name">employee.contract.kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_employee_view_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//i[@class='fa fa-exclamation-triangle text-danger']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="0">
+        <record model="slack.event" id="new_red_tag_created_slack_event">
+            <field name="event_name">new_red_tag_created</field>
+            <field name="event_label">On red tag creation</field>
+            <field name="expected_fields">{object: Created red tag, channel: Slack channel for red tags}</field>
+        </record>
+        <record model="slack.event" id="red_tag_state_changes_slack_event">
+            <field name="event_name">red_tag_state_changes</field>
+            <field name="event_label">On red tag state changes</field>
+            <field name="expected_fields">{object: Created red tag, channel: Slack channel for red tags, new_state: New red tag state, user: User that changed the red tag state}</field>
+        </record>
+        <record model="slack.event" id="red_tag_assignee_slack_event">
+            <field name="event_name">red_tag_assignee</field>
+            <field name="event_label">On red tag assignee changes</field>
+            <field name="expected_fields">{object: Created red tag, user: The user who receives the direct message., assigned_by: The user who assigns the Red Tag}</field>
+        </record>
+    </data>
+</odoo>

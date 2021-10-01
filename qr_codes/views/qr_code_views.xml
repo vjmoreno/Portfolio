@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="qr_code_tree_view" model="ir.ui.view">
+        <field name="name">qr_code.tree</field>
+        <field name="model">qr.code</field>
+        <field name="arch" type="xml">
+            <tree string="QR codes">
+                <field name="qr_code"/>
+                <field name="res_reference"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="qr_code_form_view" model="ir.ui.view">
+        <field name="name">qr.code.form</field>
+        <field name="model">qr.code</field>
+        <field name="arch" type="xml">
+            <form string="QR code">
+                <header>
+                    <button name="void" id="void" type="object" string="Void" class="oe_highlight"
+                            attrs="{'invisible': [('status', '!=', 'registered')]}"
+                            style="color: #FFFFFF;background-color: #000000;border-color: #000000;"/>
+                    <field name="status" widget="statusbar" statusbar_visible="registered,voided"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="qr_code" domain="[('res_reference','=', False), ('status', '=', False)]"/>
+                            <field name="res_reference" domain="[('qr_code_id','=', False)]" options="{'no_create_edit': True, 'no_create': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

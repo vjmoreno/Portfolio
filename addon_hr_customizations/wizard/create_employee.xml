@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="hr_employee_create_wizard_form_view" model="ir.ui.view">
+            <field name="name">hr_employee_create_wizard.form_view</field>
+            <field name="model">hr.employee.create.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Employee">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" style="min-height:44px;padding:10px">
+                            <h2 class="text-center"><span></span><field name="action" class="oe_inline" readonly="1"/> Employee Wizard
+                            </h2>
+                            <h4 class="text-center"> Step <field name="wizard_step" class="oe_inline" readonly="1"/> of <field name="step_count" class="oe_inline" readonly="1"/> </h4>
+                        </div>
+                        <group attrs="{'invisible': [('wizard_step','!=',1)]}">
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="first_name" placeholder="Employee's First Name" required="True"/>
+                                    <field name="last_name" placeholder="Employee's Last Name" required="True"/>
+                                </h1>
+                                <h2>
+                                    <field name="job_title" placeholder="Job Title" required="True"/>
+                                </h2>
+                            </div>
+                        </group>
+                        <group attrs="{'invisible': [('wizard_step','!=',2)]}">
+                                <field name="department_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="company_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="relationships" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="parent_id" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="employee_id" invisible="1"/>
+                                <field name="birthday" attrs="{'invisible': [('employee_id', '=', False)]}"/>
+                                <field name="start_date" attrs="{'invisible': [('employee_id', '=', False)]}"/>
+                        </group>
+                        <group attrs="{'invisible': [('wizard_step','!=',3)]}" name="step_3">
+                                <field name="contact_id" invisible="1"/>
+                                <field name="personal_email"/>
+                                <field name="country_id" force_save="1" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                                <field name="city" force_save="1" />
+                                <field name="work_location" widget="radio" options="{'horizontal': true}"/>
+				                <field name="on_site_location_id" domain="[('remote','!=',True)]" attrs="{'invisible': [('work_location','!=','on_site')]}" options="{'no_create_edit': True, 'no_create':True, 'no_open':True}"/>
+                        </group>
+                        <footer>
+                            <div class="row">
+                                <div class="col-9">
+                                </div>
+                                <div class="col-3">
+                                    <button name="back_step" type="object" string=" &lt; Back"
+                                            class="btn btn-secondary" style="float:left;min-width:100px"
+                                            attrs="{'invisible': [('wizard_step','=',1)]}"/>
+                                    <button name="next_step" type="object" string="Next"
+                                            class="oe_highlight" style="float:right;min-width:100px"
+                                            attrs="{'invisible': [('wizard_step','=',3)]}"/>
+                                    <button name="create_employee" type="object" class="oe_highlight"
+                                            style="float:right" attrs="{'invisible': [('wizard_step', '!=', 3)]}">
+                                            <field readonly="1" name="action" options='{"no_open": True}'/>
+                                    </button>
+                                </div>
+                            </div>
+                        </footer>
+                    </sheet>
+                    <style>
+                        .o_form_button_save, .o_form_button_cancel{
+                        display:none;
+                        }
+                    </style>
+                </form>
+            </field>
+        </record>
+
+        <!-- Inherit Kanban View to Modify it -->
+        <record id="create_employee_action_kanban_inherit" model="ir.ui.view">
+            <field name="name">hr_employee.create_employee_action_kanban_inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//kanban" position="attributes">
+                   <attribute name="on_create">addon_hr_customizations.create_employee_action</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="create_employee_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.create.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+</odoo>

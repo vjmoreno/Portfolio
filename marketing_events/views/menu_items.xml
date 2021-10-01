@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Main menu -->
+    <menuitem name="Marketing Events"
+              id="marketing_events.marketing_events_main_menu"
+              web_icon="marketing_events,static/description/icon.png"
+              groups="marketing_events.group_user"/>
+
+    <!-- Marketing Events -->
+    <record id="marketing_events.marketing_events_action" model="ir.actions.act_window">
+        <field name="name">Marketing Events</field>
+        <field name="res_model">marketing.event</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Marketing Events"
+              id="marketing_events_menu"
+              parent="marketing_events.marketing_events_main_menu"
+              sequence="1"
+              action="marketing_events.marketing_events_action"
+              groups="marketing_events.group_user"/>
+
+    <menuitem name="Configuration"
+              id="configuration_menu"
+              parent="marketing_events.marketing_events_main_menu"
+              sequence="1"
+              groups="marketing_events.group_admin"/>
+</odoo>

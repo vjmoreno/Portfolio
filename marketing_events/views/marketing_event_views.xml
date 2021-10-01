@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="marketing_event_tree_view" model="ir.ui.view">
+        <field name="name">marketing_event.tree</field>
+        <field name="model">marketing.event</field>
+        <field name="arch" type="xml">
+            <tree string="Marketing Event">
+                <field name="name"/>
+                <field name="owner"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="marketing_event_form_view" model="ir.ui.view">
+        <field name="name">marketing.event.form</field>
+        <field name="model">marketing.event</field>
+        <field name="arch" type="xml">
+            <form string="Marketing Event">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="owner"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <label for="description" string="Description"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread" options="{'hide_new_message_button': True}"/>
+                    <field name="message_follower_ids"
+                           widget="mail_followers"
+                           help="Follow this document to automatically track the events and issues of this process."
+                           groups="marketing_events.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

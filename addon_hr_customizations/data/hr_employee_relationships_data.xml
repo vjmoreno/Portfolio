@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="employee_relationship_1" model="hr.employee.relationships">
+            <field name="name">US Employee W2</field>
+        </record>
+
+        <record id="employee_relationship_2" model="hr.employee.relationships">
+            <field name="name">US contractor 1099</field>
+        </record>
+
+        <record id="employee_relationship_3" model="hr.employee.relationships">
+            <field name="name">Non US Freelancer</field>
+        </record>
+    </data>
+</odoo>

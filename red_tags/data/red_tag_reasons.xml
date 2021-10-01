@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='red_tag_reason_1' model="red.tag.reason">
+        <field name="name">No Longer Used</field>
+    </record>
+    <record id='red_tag_reason_2' model="red.tag.reason">
+        <field name="name">Broken</field>
+    </record>
+    <record id='red_tag_reason_3' model="red.tag.reason">
+        <field name="name">Unknown Owner</field>
+    </record>
+    <record id='red_tag_reason_4' model="red.tag.reason">
+        <field name="name">Other</field>
+    </record>
+</odoo>

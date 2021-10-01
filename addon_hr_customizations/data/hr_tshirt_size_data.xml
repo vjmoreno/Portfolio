@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- hr.tshirt.size data MALE -->
+        <record id="hr_shirt_male_01" model="hr.tshirt.size">
+            <field name="name">Men's Small</field>
+            <field name="code">male-s</field>
+            <field name="gender">male</field>
+        </record>
+        <record id="hr_shirt_male_10" model="hr.tshirt.size">
+            <field name="name">Men's Medium</field>
+            <field name="code">male-m</field>
+            <field name="gender">male</field>
+        </record>
+        <record id="hr_shirt_male_13" model="hr.tshirt.size">
+            <field name="name">Men's Large</field>
+            <field name="code">male-l</field>
+            <field name="gender">male</field>
+        </record>
+        <record id="hr_shirt_male_20" model="hr.tshirt.size">
+            <field name="name">Men's XL</field>
+            <field name="code">male-xl</field>
+            <field name="gender">male</field>
+        </record>
+        <record id="hr_shirt_male_30" model="hr.tshirt.size">
+            <field name="name">Men's 2XL</field>
+            <field name="code">male-2xl</field>
+            <field name="gender">male</field>
+        </record>
+
+        <!-- hr.tshirt.size data FEMALE -->
+        <record id="hr_shirt_female_01" model="hr.tshirt.size">
+            <field name="name">Women's Small</field>
+            <field name="code">female-s</field>
+            <field name="gender">female</field>
+        </record>
+        <record id="hr_shirt_female_15" model="hr.tshirt.size">
+            <field name="name">Women's Medium</field>
+            <field name="code">female-m</field>
+            <field name="gender">female</field>
+        </record>
+        <record id="hr_shirt_female_10" model="hr.tshirt.size">
+            <field name="name">Women's Large</field>
+            <field name="code">female-l</field>
+            <field name="gender">female</field>
+        </record>
+        <record id="hr_shirt_female_20" model="hr.tshirt.size">
+            <field name="name">Women's XL</field>
+            <field name="code">female-xl</field>
+            <field name="gender">female</field>
+        </record>
+        <record id="hr_shirt_female_30" model="hr.tshirt.size">
+            <field name="name">Women's 2XL</field>
+            <field name="code">female-2xl</field>
+            <field name="gender">male</field>
+        </record>
+
+        <!-- hr.tshirt.size data OTHER-MALE -->
+        <record id="hr_shirt_other_01" model="hr.tshirt.size">
+            <field name="name">Men's Small</field>
+            <field name="code">other-male-s</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_10" model="hr.tshirt.size">
+            <field name="name">Men's Medium</field>
+            <field name="code">other-male-m</field>
+            <field name="gender">male</field>
+        </record>
+        <record id="hr_shirt_male_13" model="hr.tshirt.size">
+            <field name="name">Men's Large</field>
+            <field name="code">other-male-l</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_20" model="hr.tshirt.size">
+            <field name="name">Men's XL</field>
+            <field name="code">other-male-xl</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_30" model="hr.tshirt.size">
+            <field name="name">Men's 2XL</field>
+            <field name="code">other-male-2xl</field>
+            <field name="gender">other</field>
+        </record>
+
+        <!-- hr.tshirt.size data OTHER-FEMALE -->
+        <record id="hr_shirt_other_01" model="hr.tshirt.size">
+            <field name="name">Women's Small</field>
+            <field name="code">other-female-s</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_15" model="hr.tshirt.size">
+            <field name="name">Women's Medium</field>
+            <field name="code">other-female-m</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_10" model="hr.tshirt.size">
+            <field name="name">Women's Large</field>
+            <field name="code">other-female-l</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_20" model="hr.tshirt.size">
+            <field name="name">Women's XL</field>
+            <field name="code">other-female-xl</field>
+            <field name="gender">other</field>
+        </record>
+        <record id="hr_shirt_other_30" model="hr.tshirt.size">
+            <field name="name">Women's 2XL</field>
+            <field name="code">other-female-2xl</field>
+            <field name="gender">other</field>
+        </record>
+    </data>
+</odoo>

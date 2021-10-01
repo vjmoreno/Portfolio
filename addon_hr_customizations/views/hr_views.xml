@@ -1,0 +1,96 @@
+<?xml  version="1.0"?>
+<odoo>
+
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Employees" create="false" edit="false" delete="false">
+                <field name="name"/>
+                <field name="work_phone"/>
+                <field name="work_email"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="parent_id"/>
+                <field name="coach_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_kanban_view_employees" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <kanban class="o_hr_employee_kanban" create="false" edit="false" delete="false">
+                <field name="id"/>
+                <field name="hr_presence_state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                        <field name="image_128" widget="image" class="o_kanban_image_fill_left o_hr_rounded_circle" options="{'zoom': true, 'background': true, 'preventClicks': false}"/>
+
+                        <div class="oe_kanban_details">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title">
+                                        <div class="float-right" t-if="record.hr_presence_state.raw_value == 'present'">
+                                            <span class="fa fa-circle text-success" role="img" aria-label="Present" title="Present" name="presence_present"></span>
+                                        </div>
+                                        <div class="float-right" t-if="record.hr_presence_state.raw_value == 'absent'">
+                                            <span class="fa fa-circle text-danger" role="img" aria-label="Absent" title="Absent" name="presence_absent"></span>
+                                        </div>
+                                        <div class="float-right" t-if="record.hr_presence_state.raw_value == 'to_define'">
+                                            <span class="fa fa-circle text-warning" role="img" aria-label="To define" title="To define" name="presence_to_define"></span>
+                                        </div>
+                                        <field name="name" placeholder="Employee's Name"/>
+                                    </strong>
+                                    <span t-if="record.job_title.raw_value" class="o_kanban_record_subtitle"><field name="job_title"/></span>
+                                </div>
+                            </div>
+                            <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color'}" groups="hr.group_hr_manager"/>
+                            <ul>
+                                <li id="last_login"/>
+                                <li t-if="record.work_email.raw_value" class="o_text_overflow"><field name="work_email" /></li>
+                                <li t-if="record.work_phone.raw_value"><field name="work_phone" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--    New HR Group User -->
+    <!--    This new group has Employees App access where implied_ids of-->
+    <!--    hr.group_hr_user have model access but no App access.-->
+    <!--    We need new group because we still want to allow -->
+    <!--    certain access to models thru hr.group_hr_user such as -->
+    <!--    Human Resources → Contracts → Administrator-->
+    <!--    Operations → Time Sheets → Administrator-->
+    <!--    such groups have hr.group_hr_user as implied id-->
+    <record id="group_hr_user_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user'), ref('hr.group_hr_user')])]"/>
+        <field name="comment">The user will be able to approve document created by employees.</field>
+    </record>
+
+    <!-- Add new Group to the current implied_ids-->
+    <record id="hr.group_hr_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_hr_user_user'))]"/>
+    </record>
+
+    <!-- Remove Odoo native HR Officer Group from HR Category-->
+    <record id="hr.group_hr_user" model="res.groups">
+        <field name="category_id" eval="False"/>
+    </record>
+
+    <!-- Employees App only for hr group users. Replace implied_ids  -->
+    <record id="hr.menu_hr_root" model="ir.ui.menu" >
+     <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager'),ref('group_hr_user_user')])]"/>
+    </record>
+
+</odoo>

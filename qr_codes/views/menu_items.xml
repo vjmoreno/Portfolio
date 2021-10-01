@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="QR codes"
+              id="qr_codes.qr_code_main_menu"
+              web_icon="qr_codes,static/description/icon.png"
+              groups="base.group_user"/>
+
+    <record id="qr_codes.qr_code_action" model="ir.actions.act_window">
+        <field name="name">QR codes</field>
+        <field name="res_model">qr.code</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="QR codes"
+              id="qr_code_menu"
+              parent="qr_codes.qr_code_main_menu"
+              sequence="1"
+              action="qr_codes.qr_code_action"
+              groups="base.group_user"/>
+</odoo>

@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="timezone_app_settings">
+            <field name="name">res.config.settings.timezone.api.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="addon_holidays.holidays_app_settings"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='addon_holidays']" position="inside">
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <b>Google Maps API key</b>
+                                <div class="content-group">
+                                    <div class="mt8">
+                                        <label for="google_map_api_key"/>
+                                        <field name="google_map_api_key"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

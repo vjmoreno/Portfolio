@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="red_tag_tree_view" model="ir.ui.view">
+        <field name="name">red.tag.tree</field>
+        <field name="model">red.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Red Tags">
+                <field name="id"/>
+                <field name="state"/>
+                <field name="tagged_by"/>
+                <field string="Tagged on" name="create_date"/>
+                <field name="qr_code_id"/>
+                <field name="summary"/>
+                <field name="type"/>
+                <field name="reason"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="red_tag_form_view" model="ir.ui.view">
+        <field name="name">red.tag.form</field>
+        <field name="model">red.tag</field>
+        <field name="arch" type="xml">
+            <form string="Red Tag">
+                <header>
+                    <button name="action_pending_review" id="action_pending_review" type="object" string="Submit"
+                            class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"
+                            style="color: #000000;background-color: #cee3f6;border-color: #cee3f6;"/>
+                    <button name="action_to_save" id="action_to_save" type="object" string="Save" class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'pending_review')]}"
+                            style="color: #000000;background-color: #b0d4ca;border-color: #b0d4ca;"/>
+                    <button name="action_to_dispose" id="action_to_dispose" type="object" string="Trash"
+                            class="oe_highlight" attrs="{'invisible': [('state', '!=', 'pending_review')]}"
+                            style="color: #000000;background-color: #f8ecad;border-color: #f8ecad;"/>
+                    <button name="action_to_sell" id="action_to_sell" type="object" string="Sell" class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'pending_review')]}"
+                            style="color: #000000;background-color: #edd3de;border-color: #edd3de;"/>
+                    <button name="action_done" id="action_done" type="object" string="Complete" class="oe_highlight"
+                            attrs="{'invisible': [('state', 'not in', ['to_save', 'to_dispose', 'to_sell'])]}"
+                            style="color: #FFFFFF;background-color: #90b550;border-color: #90b550;"/>
+                    <button name="action_abandoned" id="action_abandoned" type="object" string="Abandon"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', 'not in', ['pending_review', 'to_save', 'to_dispose', 'to_sell'])]}"
+                            style="color: #FFFFFF;background-color: #000000;border-color: #000000;"/>
+                    <button name="action_pending_review" id="action_re_submit" type="object" string="Re-submit"
+                            class="oe_highlight" attrs="{'invisible': [('state', '!=', 'abandoned')]}"
+                            style="color: #000000;background-color: #cee3f6;border-color: #cee3f6;"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,pending_review,to_save,to_dispose,to_sell,done,abandoned"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="qr_code_id"
+                                   domain="[('res_reference','=', False), ('status', '=', False)]"
+                                   options="{'no_create_edit': True, 'no_create': True}"/>
+                            <field name="summary"/>
+                            <field name="type"/>
+                            <field name="reason"/>
+                        </group>
+                        <group>
+                            <field name="id" attrs="{'invisible':[('id', '==', False)]}"/>
+                            <field name="tagged_by"/>
+                            <field name="assignee"/>
+                            <field name="tagged_on"/>
+                        </group>
+                    </group>
+                    <label for="description" string="Description"/>
+                    <field name="description" widget="editor_js_field"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread" options="{'hide_new_message_button': True}"/>
+                    <field name="message_follower_ids"
+                           widget="mail_followers"
+                           help="Follow this document to automatically track the events and issues of this process."
+                           groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="red_tag_kanban_view" model="ir.ui.view">
+        <field name="name">red.tag.kanban</field>
+        <field name="model">red.tag</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard" records_draggable="false" default_group_by="state" group_create="0"
+                    group_edit="0" group_delete="0" quick_create="false">
+                <field name="summary"/>
+                <field name="tagged_by"/>
+                <field name="assignee"/>
+                <field name="description"/>
+                <field name="type"/>
+                <field name="reason"/>
+                <field name="state"/>
+                <field name="qr_code_id"/>
+                <field name="create_date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <a type="open">
+                                <div class="row" style="background-color:#ff8f80;margin:-8px -16px 0px -16px;">
+                                    <div class="col-12">
+                                        <strong style="color:black"><field name="type"/>:
+                                            <field name="reason"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span style="color:black">
+                                            <field name="summary"/>
+                                            <br/>
+                                        </span>
+                                        <t t-if="record.qr_code_id.raw_value">
+                                            <span style="color:black">QR code:
+                                                <field name="qr_code_id"/>
+                                            </span>
+                                        </t>
+                                        <hr class="mt4 mb4"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                     <div class="float-left col-2">
+                                         <img t-if="record.tagged_by.raw_value"
+                                             t-att-src="kanban_image('res.users', 'image_128', record.tagged_by.raw_value)"
+                                             style="width:30px; height:30px;"
+                                             t-att-title="record.tagged_by.value"
+                                             t-att-alt="record.tagged_by.value"
+                                             class="oe_kanban_avatar"/>
+                                    </div>
+                                    <div class="col-8 text-center">
+                                        <span style="color:black">
+                                            <field name="create_date"/>
+                                        </span>
+                                    </div>
+                                    <div class="float-right col-2">
+                                        <img t-if="record.assignee.raw_value"
+                                             t-att-src="kanban_image('res.users', 'image_128', record.assignee.raw_value)"
+                                             style="width:30px; height:30px;"
+                                             t-att-title="record.assignee.value"
+                                             t-att-alt="record.assignee.value"
+                                             class="oe_kanban_avatar"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

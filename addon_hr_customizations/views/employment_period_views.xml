@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="employment_period_form_view" model="ir.ui.view">
+      <field name="name">employment.period.form.view</field>
+      <field name="model">employment.period</field>
+      <field name="arch" type="xml">
+        <form string="Employment Period">
+          <sheet>
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                <field name="name" placeholder="Title"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="start_date"/>
+                <field name="termination_date"/>
+                <field name="termination_reason" attrs="{'required': [('termination_date', '!=', False)]}"/>
+              </group>
+              <group>
+                <field name="relationship_id"/>
+                <field name="company_id"/>
+                <field name="employee_id" required="0" readonly="1" force_save="1"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="employment_period_tree_view" model="ir.ui.view">
+      <field name="name">employment.period.tree.view</field>
+      <field name="model">employment.period</field>
+      <field name="arch" type="xml">
+        <tree string="Employment Periods">
+          <field name="sequence" widget="handle"/>
+          <field name="start_date"/>
+          <field name="termination_date"/>
+          <field name="relationship_id"/>
+          <field name="company_id"/>
+          <field name="employee_id" invisible="1"/>
+          <field name="termination_reason"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record model="slack.message.action" id="action_on_red_tag_created">
+            <field name="name">Slack on red tag creation</field>
+            <field name="config_id" ref="slack.slack_nanoramic_config"/>
+            <field name="event_id" ref="slack_red_tags.new_red_tag_created_slack_event"/>
+            <field name="message_template">A new Red Tag has been created {{ object.summary }} by {{
+                object.tagged_by.name }}.
+            </field>
+            <field name="channels_expression">channel</field>
+        </record>
+        <record model="slack.message.action" id="action_on_red_tag_states_changes">
+            <field name="name">Slack on red tag states changes</field>
+            <field name="config_id" ref="slack.slack_nanoramic_config"/>
+            <field name="event_id" ref="slack_red_tags.red_tag_state_changes_slack_event"/>
+            <field name="message_template">
+                {% if new_state != 'Done' %}
+                Red tag {{ object.summary }} has been moved from {{ dict(object._fields['state'].selection).get(object.state) }} to {{ new_state}} by {{user}}.
+                {% else %}
+                Red Tag {{ object.summary }} has been completed.
+                {% endif %}
+            </field>
+            <field name="channels_expression">channel</field>
+        </record>
+        <record model="slack.message.action" id="action_on_red_tag_assignee">
+            <field name="name">Red Tag assignee changes</field>
+            <field name="config_id" ref="slack.slack_nanoramic_config" />
+            <field name="event_id" ref="slack_red_tags.red_tag_assignee_slack_event" />
+            <field name="message_template">Red Tag {{ object.summary }} was just assigned to you by {{ assigned_by }}.</field>
+            <field name="type">dm</field>
+        </record>
+    </data>
+</odoo>

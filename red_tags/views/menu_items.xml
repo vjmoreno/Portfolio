@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="Red Tags"
+              id="red_tags.red_tag_main_menu"
+              web_icon="red_tags,static/description/icon.png"
+              groups="base.group_user"/>
+
+    <record id="red_tags.red_tag_action" model="ir.actions.act_window">
+        <field name="name">Red Tags</field>
+        <field name="res_model">red.tag</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <menuitem name="Red Tags"
+              id="red_tag_menu"
+              parent="red_tags.red_tag_main_menu"
+              sequence="1"
+              action="red_tags.red_tag_action"
+              groups="base.group_user"/>
+
+    <menuitem name="Configuration"
+              id="red_tags.configuration_menu"
+              parent="red_tag_main_menu"
+              sequence="2"
+              groups="red_tags.group_admin"/>
+
+    <record id="red_tags.red_tag_item_type_action" model="ir.actions.act_window">
+        <field name="name">Item Types</field>
+        <field name="res_model">red.tag.item.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Item Types"
+              id="red_tag_item_type_menu"
+              parent="red_tags.configuration_menu"
+              sequence="1"
+              action="red_tags.red_tag_item_type_action"
+              groups="red_tags.group_admin"/>
+
+    <record id="red_tags.red_tag_reason_action" model="ir.actions.act_window">
+        <field name="name">Reasons</field>
+        <field name="res_model">red.tag.reason</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Reasons"
+              id="red_tag_reason_menu"
+              parent="red_tags.configuration_menu"
+              sequence="2"
+              action="red_tags.red_tag_reason_action"
+              groups="red_tags.group_admin"/>
+
+    <record id="red_tag_transition_activity_action" model="ir.actions.act_window">
+        <field name="name">Transition Activity</field>
+        <field name="res_model">red.tag.transition.activity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Transition Activities"
+              id="red_tag_transition_activity__menu"
+              parent="red_tags.configuration_menu"
+              sequence="3"
+              action="red_tags.red_tag_transition_activity_action"
+              groups="red_tags.group_admin"/>
+</odoo>

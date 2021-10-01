@@ -1,0 +1,48 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_work_location_manager,hr.employee.work.location.manager,model_hr_employee_work_location,hr.group_hr_manager,1,1,1,1
+access_hr_employee_work_location_officer,hr.employee.work.location.officer,model_hr_employee_work_location,hr.group_hr_user,1,1,1,0
+access_hr_employee_work_location_user,hr.employee.work.location.user,model_hr_employee_work_location,base.group_user,1,0,0,0
+access_hr_language_manager,hr.language.manager,model_hr_language,hr.group_hr_manager,1,1,1,1
+access_hr_language_user,hr.language.user,model_hr_language,base.group_user,1,0,0,0
+access_hr_language_officer,hr.language.officer,model_hr_language,hr.group_hr_user,1,1,1,1
+access_hr_language_line_user,hr.language.line.user,model_hr_language_line,base.group_user,1,0,0,0
+access_hr_language_line_officer,hr.language.line.officer,model_hr_language_line,hr.group_hr_user,1,1,1,1
+access_hr_employee_education_level_manager,hr.employee.education.level.manager,model_hr_employee_education_level,hr.group_hr_manager,1,1,1,1
+access_hr_employee_education_level_officer,hr.employee.education.level.officer,model_hr_employee_education_level,hr.group_hr_user,1,1,1,0
+access_hr_employee_education_level_user,hr.employee.education.level.user,model_hr_employee_education_level,base.group_user,1,0,0,0
+access_hr_employee_relationships_manager,hr.employee.relationships.manager,model_hr_employee_relationships,hr.group_hr_manager,1,1,1,1
+access_hr_employee_relationships_officer,hr.employee.relationships.officer,model_hr_employee_relationships,hr.group_hr_user,1,1,1,0
+access_hr_employee_relationships_user,hr.employee.relationships.user,model_hr_employee_relationships,base.group_user,1,0,0,0
+access_hr_employee_alert_manager,hr.employee.alert.manager,model_hr_employee_alert,hr.group_hr_manager,1,1,1,1
+access_hr_employee_alert_officer,hr.employee.alert.officer,model_hr_employee_alert,hr.group_hr_user,1,1,1,0
+access_hr_employee_alert_user,hr.employee.alert.user,model_hr_employee_alert,base.group_user,1,0,0,0
+access_hr_employee_alert_rule_manager,hr.employee.alert.rule.manager,model_hr_employee_alert_rule,hr.group_hr_manager,1,1,1,1
+access_hr_employee_alert_rule_officer,hr.employee.alert.rule.officer,model_hr_employee_alert_rule,hr.group_hr_user,1,1,1,0
+access_hr_employee_alert_rule_user,hr.employee.alert.rule.user,model_hr_employee_alert_rule,base.group_user,1,0,0,0
+access_hr_employee_faq,hr.employee.faq,model_hr_employee_faq,base.group_user,1,1,1,1
+access_corporate_value_user,access_corporate_value user,model_corporate_value,base.group_user,1,0,0,0
+access_corporate_value_manager,access_corporate_value manager,model_corporate_value,hr.group_hr_manager,1,1,1,1
+access_hr_employee_alert_skip_manager,hr.employee.alert.skip.manager,model_hr_employee_alert_skip,hr.group_hr_manager,1,1,1,1
+access_hr_employee_alert_skip_officer,hr.employee.alert.skip.officer,model_hr_employee_alert_skip,hr.group_hr_user,1,1,1,0
+access_hr_employee_alert_skip_user,hr.employee.alert.skip.user,model_hr_employee_alert_skip,base.group_user,1,0,0,0
+access_hr_employee_activities_wizard,hr.employee.activities.wizard,model_hr_employee_activities_wizard,base.group_user,1,1,1,1
+access_hr_employee_health_documents,hr.employee.health,model_hr_employee_health,base.group_user,1,1,1,1
+access_hr_employee_citizenship_documents,hr.employee.citizenship,model_hr_employee_citizenship,base.group_user,1,1,1,1
+access_hr_employee_travel_documents,hr.employee.travel,model_hr_employee_travel,base.group_user,1,1,1,1
+access_hr_loyalty_program,hr.loyalty.program,model_hr_loyalty_program,base.group_user,1,1,1,1
+access_hr_employee_frequent_flyer,hr.employee.frequent.flyer,model_hr_employee_frequent_flyer,base.group_user,1,1,1,1
+
+access_hr_employee_dietary_restriction_reader,hr.employee.dietary.restriction reader,model_hr_employee_dietary_restriction,,1,0,0,0
+access_hr_employee_dietary_restriction_user,hr.employee.dietary.restriction user,model_hr_employee_dietary_restriction,base.group_user,1,1,1,0
+access_hr_employee_dietary_restriction_manager,hr.employee.dietary.restriction manager,model_hr_employee_dietary_restriction,hr.group_hr_manager,1,1,1,1
+
+access_travel_special_assistance_reader,hr.employee.dietary.restriction reader,model_travel_special_assistance,,1,0,0,0
+access_travel_special_assistance_user,hr.employee.dietary.restriction user,model_travel_special_assistance,base.group_user,1,1,1,0
+access_travel_special_assistance_manager,hr.employee.dietary.restriction manager,model_travel_special_assistance,hr.group_hr_manager,1,1,1,1
+
+access_employment_period_reader,access_employment_period reader,model_employment_period,,1,0,0,0
+access_employment_period_user,access_employment_period user,model_employment_period,base.group_user,1,1,1,0
+access_employment_period_manager,access_employment_period manager,model_employment_period,hr.group_hr_manager,1,1,1,1
+
+access_hr_tshirt_size_user,access_hr_tshirt_size user,model_hr_tshirt_size,base.group_user,1,0,0,0
+access_hr_tshirt_size_manager,access_hr_tshirt_size manager,model_hr_tshirt_size,hr.group_hr_manager,1,1,1,1

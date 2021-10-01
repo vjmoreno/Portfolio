@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mail_template_activate_employee" model="mail.template">
+            <field name="name">Activate Employee: Enabled Google Login</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="subject">Your work email has been activated</field>
+            <field name="email_from">"${object.company_id.name | safe}" &lt;${(object.company_id.email or user.email) | safe}&gt;</field>
+            <field name="email_to">${object.private_email | safe}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="user_signature" eval="False"/>
+            <field name="body_html" type="html">
+                <div>
+                    Dear ${object.name_full}:
+                    <br/><br/>
+                    Welcome to Nanoramic, your work email ${ctx.get('new_work_email')}
+                    has been activated and now you can login using Google.
+                    <br/><br/>
+                    To login into our boarding portal go to boarding.nanoramic.com<br></br>
+                    To login into our employee portal go to employee.nanoramic.com<br></br>
+                    To login into our ERP go to erp.nanoramic.com<br></br>
+                </div>
+        </field>
+        </record>
+    </data>
+</odoo>

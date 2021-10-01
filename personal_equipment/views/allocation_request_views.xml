@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="personal_equipment.allocation_request_form_view" model="ir.ui.view">
+        <field name="name">allocation.request.form.view</field>
+        <field name="model">allocation.request</field>
+        <field eval="4" name="priority"/>
+        <field name="arch" type="xml">
+            <form string="Allocation Request">
+                <header>
+                    <button string="Set to New" name="set_draft" type="object" states="cancel,returned"
+                            confirm="Are you sure you want to move this request to new ?" class="oe_highlight"
+                            groups="equipment_allocations.group_equipment_user"/>
+                    <button string="Approve" name="set_approved" type="object" states="new"
+                            confirm="Are you sure you want to approve this request?" class="oe_highlight"
+                            groups="equipment_allocations.group_equipment_user"/>
+                    <button string="Allocate" name="set_allocated" type="object" states="approved" class="oe_highlight"
+                            confirm="Are you sure you want to allocate this request?"
+                            groups="equipment_allocations.group_equipment_user"/>
+                    <button string="Return" name="action_return" type="object" states="allocated" class="oe_highlight"
+                            groups="equipment_allocations.group_equipment_user"/>
+                    <button string="Replace" name="%(equipment_allocations.replace_equipment_wizard_action)d"
+                            type="action"
+                            attrs="{'invisible':['|',('state','!=','allocated'),('type','=','on-demand')]}"
+                            groups="equipment_allocations.group_equipment_user"/>
+                    <button string="Cancel" name="%(equipment_allocations.wk_reason_wizard_action)d" type="action"
+                            states="new,approved"/>
+                    <button string="Cancel" name="%(equipment_allocations.wk_reason_wizard_action)d" type="action"
+                            states="allocated" groups="equipment_allocations.group_equipment_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,approved,allocated,returned"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Subject"/>
+                        <h1>
+                            <field name="name" placeholder="Request for laptop"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Equipment Details" name="wk_equipment_detail">
+                            <field name="type" widget="radio" options="{'horizontal':True}" readonly="1"/>
+                            <field name="category_id"
+                                   options="{'no_create_edit': True, 'no_open':True,'no_create':True}"/>
+                            <field name="equipment_id" context="{'default_category_id':category_id}"
+                                   options="{'no_create':True}"/>
+                            <field name="equipment_ids" invisible="1"/>
+                            <field name="is_equipment_assign_to_department" invisible="1"/>
+                            <field name="product_id" groups="equipment_allocations.group_equipment_officer"/>
+                            <field name="request_date" string="Scheduled Date"
+                                   attrs="{ 'invisible':[('request_date','=',False)] }"/>
+                            <field name="close_date" readonly="1" attrs="{ 'invisible':[('close_date','=',False)] }"/>
+                            <label for="duration" attrs="{ 'invisible':[('duration','in',[False,0.0])] }"/>
+                            <div class="o_row" attrs="{ 'invisible':[('duration','in',[False,0.0])] }">
+                                <field name="duration" class="oe_inline" readonly="1" widget="float_time"/>hours
+                            </div>
+                            <field name="priority" widget="priority"/>
+                        </group>
+                        <group string="Employee Information" name="wk_employee_detail"
+                               attrs="{ 'invisible':[('is_equipment_assign_to_department','=',True)] }">
+                            <field name="request_user_id" string="Assigned To"
+                                   attrs="{ 'required':[('is_equipment_assign_to_department','=',False )] }"
+                                   options="{'no_create_edit': True, 'no_open':True,'no_create':True}"/>
+                        </group>
+                        <group string="Department Information" name="wk_department_detail"
+                               attrs="{ 'invisible':[('is_equipment_assign_to_department','=',False)] }">
+                            <field name="request_department_id" string="Assigned To"
+                                   attrs="{ 'required':[('is_equipment_assign_to_department','=',True )] }"
+                                   options="{'no_create_edit': True, 'no_open':True,'no_create':True}"/>
+                        </group>
+                        <group string="General Information" name="wk_general_detail">
+                            <field name="approved_by" string="Approved By" readonly="1"
+                                   attrs="{ 'invisible':[('approved_by','=',False)] }"/>
+                            <field name="return_to" string="Return To" readonly="1"
+                                   attrs="{ 'invisible':[('return_to','=',False)] }"/>
+                            <field name="rejected_by" string="Cancelled By" readonly="1"
+                                   attrs="{ 'invisible':[('rejected_by','=',False)] }"/>
+                            <field name="create_uid" string="Created By" readonly="1"
+                                   attrs="{ 'invisible':[('create_uid','=',False)] }"/>
+                            <field name="create_date" string="Created Date" readonly="1"
+                                   attrs="{ 'invisible':[('create_date','=',False)] }"/>
+                            <field name="archive" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name='description' placeholder="Internal Note ......."/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="allocation_request_tree_view" model="ir.ui.view">
+        <field name="name">allocation.request.tree.view</field>
+        <field name="model">allocation.request</field>
+        <field name="arch" type="xml">
+            <tree string="Allocation Requests" decoration-bf="message_needaction==True"
+                  decoration-danger="state == 'cancel'" decoration-success="state == 'returned'"
+                  decoration-info="state == 'new'" decoration-warning="state in ['allocated','approved']">
+                <field name="message_needaction" invisible="1"/>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="request_date"/>
+                <field name="request_user_id"/>
+                <field name="approved_by"/>
+                <field name="category_id"/>
+                <field name="type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

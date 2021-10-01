@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+marketing_event_internal_user,marketing_event_internal_user,marketing_events.model_marketing_event,marketing_events.group_user,1,1,1,1
+marketing_event_admin,marketing_event_admin,marketing_events.model_marketing_event,marketing_events.group_admin,1,1,1,1

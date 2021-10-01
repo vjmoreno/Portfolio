@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="hr.employee" name="get_employees_directory"/>
+        <function model="res.country" name="country_blank_state"/>
+        <function model="hr.employee.work.location" name="work_location_blank_state"/>
+    </data>
+</odoo>

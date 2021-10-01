@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record model="slack.message.action" id="action_on_today_is_public_holiday">
+            <field name="name">Slack to notify public holidays</field>
+            <field name="config_id" ref="slack.slack_nanoramic_config" />
+            <field name="event_id" ref="addon_holidays.today_is_public_holiday" />
+            <field name="message_template">:flag-{{ holiday.country_name.code.lower() }}: {{ day_descriptor }} is *{{ holiday.name }}* {{ '\n' }}Public holiday in *{{ holiday.country_name.name }}* {% if holiday.state_name %}, *{{ holiday.state_name.name }}* {% endif %}.{% if employees %}{{ '\n' }}{{ employees }} {{ suffix }}.{% endif %}</field>
+            <field name="channel">#general</field>
+        </record>
+        <record model="slack.event" id="assign_employee_activities_to_supervisor_event">
+            <field name="event_name">assign_employee_activities_to_supervisor</field>
+            <field name="event_label">Reassign employee activities to its supervisor</field>
+            <field name="expected_fields">{user: User to notify, object: HR Employee}</field>
+        </record>
+        <record model="slack.message.action" id="action_assign_employee_activities_to_supervisor">
+            <field name="name">Reassign Employee Activities to its Supervisor</field>
+            <field name="config_id" ref="slack.slack_nanoramic_config" />
+            <field name="event_id" ref="addon_hr_customizations.assign_employee_activities_to_supervisor_event" />
+            <field name="message_template">Because {{ object.employee_id.name_full }} is transitioning to {{ object.employee_id.state }} we will transfer to you all the currently pending activities assigned to this employee.</field>
+            <field name="type">dm</field>
+        </record>
+
+    </data>
+</odoo>

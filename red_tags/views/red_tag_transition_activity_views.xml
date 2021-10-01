@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Red Tag Transition Activity Form View-->
+        <record id="red_tag_transition_activity_form_view" model="ir.ui.view">
+            <field name="name">red.tag.transition.activity.form.view</field>
+            <field name="model">red.tag.transition.activity</field>
+            <field name="arch" type="xml">
+                <form string="Transition Activity">
+                    <sheet>
+                        <group>
+                            <group>
+                               <field name="activity_type_id"
+                                       domain="['|', ('res_model_id', '=', False), ('res_model_id.name', 'in', 'equipment.request')]"
+                                       options="{'no_quick_create': True,'no_create': True, 'no_create_edit': True}"/>
+                                <field name="assign_to_requester"/>
+                                <field name="supervisor_user_id"/>
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="user_id" attrs="{'readonly':[('assign_to_requester','=',True)], 'required': [('assign_to_requester','=',False)]}"/>
+                                <field name="due_days"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="summary" required="1"/>
+                        </group>
+                        <field name="description" placeholder="Description..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Red Tag Transition Activity Tree View-->
+        <record id="red_tag_transition_activity_tree_view" model="ir.ui.view">
+            <field name="name">red.tag.transition.activity.tree.view</field>
+            <field name="model">red.tag.transition.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Transition Activity" default_order="sequence, state">
+                    <field name="sequence" widget="handle"/>
+                    <field name="activity_type_id"/>
+                    <field name="summary"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

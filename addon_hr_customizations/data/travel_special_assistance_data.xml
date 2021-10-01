@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="travel_special_assistance_none" model="travel.special.assistance">
+      <field name="name">None</field>
+    </record>
+    <record id="travel_special_assistance_accompanying_passengers" model="travel.special.assistance">
+      <field name="name">Accompanying Passengers</field>
+    </record>
+    <record id="travel_special_assistance_electric_wheelchairs" model="travel.special.assistance">
+      <field name="name">Electric Wheelchairs</field>
+    </record>
+    <record id="travel_special_assistance_mobility_scooters_postural_support" model="travel.special.assistance">
+      <field name="name">Mobility Scooters &amp; Postural Support Aids Guide</field>
+    </record>
+    <record id="travel_special_assistance_assistance_dogs" model="travel.special.assistance">
+      <field name="name">Assistance Dogs</field>
+    </record>
+    <record id="travel_special_assistance_carriage_medical_equipment" model="travel.special.assistance">
+      <field name="name">The Carriage of Medical Equipment</field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,865 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="loyalty_program_1" model="hr.loyalty.program">
+                <field name="name">Miles+Bonus</field>
+            </record>
+
+            <record id="loyalty_program_2" model="hr.loyalty.program">
+                <field name="name">AerClub</field>
+            </record>
+
+            <record id="loyalty_program_3" model="hr.loyalty.program">
+                <field name="name">Bonus</field>
+            </record>
+
+            <record id="loyalty_program_4" model="hr.loyalty.program">
+                <field name="name">Aerolíneas Plus</field>
+            </record>
+
+            <record id="loyalty_program_5" model="hr.loyalty.program">
+                <field name="name">Club Premier</field>
+            </record>
+
+            <record id="loyalty_program_6" model="hr.loyalty.program">
+                <field name="name">Le Club by AFRIJET</field>
+            </record>
+
+            <record id="loyalty_program_7" model="hr.loyalty.program">
+                <field name="name">Air Algérie Plus</field>
+            </record>
+
+            <record id="loyalty_program_8" model="hr.loyalty.program">
+                <field name="name">E-Smiles</field>
+            </record>
+
+            <record id="loyalty_program_9" model="hr.loyalty.program">
+                <field name="name">AirRewards</field>
+            </record>
+
+            <record id="loyalty_program_10" model="hr.loyalty.program">
+                <field name="name">BIG</field>
+            </record>
+
+            <record id="loyalty_program_11" model="hr.loyalty.program">
+                <field name="name">Nomad Club</field>
+            </record>
+
+            <record id="loyalty_program_12" model="hr.loyalty.program">
+                <field name="name">MyCapricorne</field>
+            </record>
+
+            <record id="loyalty_program_13" model="hr.loyalty.program">
+                <field name="name">airBaltic Club</field>
+            </record>
+
+            <record id="loyalty_program_14" model="hr.loyalty.program">
+                <field name="name">PINS</field>
+            </record>
+
+            <record id="loyalty_program_15" model="hr.loyalty.program">
+                <field name="name">BlueMiles</field>
+            </record>
+
+            <record id="loyalty_program_16" model="hr.loyalty.program">
+                <field name="name">Teemane Club</field>
+            </record>
+
+            <record id="loyalty_program_17" model="hr.loyalty.program">
+                <field name="name">Celestars</field>
+            </record>
+
+            <record id="loyalty_program_18" model="hr.loyalty.program">
+                <field name="name">FLY&amp;STAMP</field>
+            </record>
+
+            <record id="loyalty_program_19" model="hr.loyalty.program">
+                <field name="name">Aeroplan</field>
+            </record>
+
+            <record id="loyalty_program_20" model="hr.loyalty.program">
+                <field name="name">Préférence</field>
+            </record>
+
+            <record id="loyalty_program_21" model="hr.loyalty.program">
+                <field name="name">Green Miles</field>
+            </record>
+
+            <record id="loyalty_program_22" model="hr.loyalty.program">
+                <field name="name">PhoenixMiles</field>
+            </record>
+
+            <record id="loyalty_program_23" model="hr.loyalty.program">
+                <field name="name">JeGagne1Billet.com</field>
+            </record>
+
+            <record id="loyalty_program_24" model="hr.loyalty.program">
+                <field name="name">sMiles</field>
+            </record>
+
+            <record id="loyalty_program_25" model="hr.loyalty.program">
+                <field name="name">My AIRDO</field>
+            </record>
+
+            <record id="loyalty_program_26" model="hr.loyalty.program">
+                <field name="name">SUMA</field>
+            </record>
+
+            <record id="loyalty_program_27" model="hr.loyalty.program">
+                <field name="name">Flying Blue</field>
+            </record>
+
+            <record id="loyalty_program_28" model="hr.loyalty.program">
+                <field name="name">Flying Returns</field>
+            </record>
+
+            <record id="loyalty_program_29" model="hr.loyalty.program">
+                <field name="name">Indus Miles</field>
+            </record>
+
+            <record id="loyalty_program_30" model="hr.loyalty.program">
+                <field name="name">Isaruuk</field>
+            </record>
+
+            <record id="loyalty_program_31" model="hr.loyalty.program">
+                <field name="name">Ndege Plus</field>
+            </record>
+
+            <record id="loyalty_program_32" model="hr.loyalty.program">
+                <field name="name">Flypass</field>
+            </record>
+
+            <record id="loyalty_program_33" model="hr.loyalty.program">
+                <field name="name">Kestrelflyer</field>
+            </record>
+
+            <record id="loyalty_program_34" model="hr.loyalty.program">
+                <field name="name">Air Moldova Club</field>
+            </record>
+
+            <record id="loyalty_program_35" model="hr.loyalty.program">
+                <field name="name">Airpoints</field>
+            </record>
+
+            <record id="loyalty_program_36" model="hr.loyalty.program">
+                <field name="name">Destinations</field>
+            </record>
+
+            <record id="loyalty_program_37" model="hr.loyalty.program">
+                <field name="name">Peace Advantage</field>
+            </record>
+
+            <record id="loyalty_program_38" model="hr.loyalty.program">
+                <field name="name">Teranga</field>
+            </record>
+
+            <record id="loyalty_program_39" model="hr.loyalty.program">
+                <field name="name">Kaveka</field>
+            </record>
+
+            <record id="loyalty_program_40" model="hr.loyalty.program">
+                <field name="name">Club Tiare</field>
+            </record>
+
+            <record id="loyalty_program_41" model="hr.loyalty.program">
+                <field name="name">Twiga Miles</field>
+            </record>
+
+            <record id="loyalty_program_42" model="hr.loyalty.program">
+                <field name="name">Elite Club</field>
+            </record>
+
+            <record id="loyalty_program_43" model="hr.loyalty.program">
+                <field name="name">Frequent Flyer</field>
+            </record>
+
+            <record id="loyalty_program_44" model="hr.loyalty.program">
+                <field name="name">Rainbow Club</field>
+            </record>
+
+            <record id="loyalty_program_45" model="hr.loyalty.program">
+                <field name="name">Mileage Plan</field>
+            </record>
+
+            <record id="loyalty_program_46" model="hr.loyalty.program">
+                <field name="name">Higher Flyer Rewards</field>
+            </record>
+
+            <record id="loyalty_program_47" model="hr.loyalty.program">
+                <field name="name">MilleMiglia</field>
+            </record>
+
+            <record id="loyalty_program_48" model="hr.loyalty.program">
+                <field name="name">Amas Miles</field>
+            </record>
+
+            <record id="loyalty_program_49" model="hr.loyalty.program">
+                <field name="name">AAdvantage</field>
+            </record>
+
+            <record id="loyalty_program_50" model="hr.loyalty.program">
+                <field name="name">ANA Mileage Club</field>
+            </record>
+
+            <record id="loyalty_program_51" model="hr.loyalty.program">
+                <field name="name">Reward Club Card</field>
+            </record>
+
+            <record id="loyalty_program_52" model="hr.loyalty.program">
+                <field name="name">Affinity Wings</field>
+            </record>
+
+            <record id="loyalty_program_53" model="hr.loyalty.program">
+                <field name="name">Mingalarbar</field>
+            </record>
+
+            <record id="loyalty_program_54" model="hr.loyalty.program">
+                <field name="name">Asiana Club</field>
+            </record>
+
+            <record id="loyalty_program_55" model="hr.loyalty.program">
+                <field name="name">Asky Club</field>
+            </record>
+
+            <record id="loyalty_program_56" model="hr.loyalty.program">
+                <field name="name">Astra Miles</field>
+            </record>
+
+            <record id="loyalty_program_57" model="hr.loyalty.program">
+                <field name="name">Súlubonus</field>
+            </record>
+
+<!--            <record id="loyalty_program_58" model="hr.loyalty.program">-->
+<!--                <field name="name">Frequent Flyer</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_59" model="hr.loyalty.program">
+                <field name="name">LifeMiles</field>
+            </record>
+
+            <record id="loyalty_program_60" model="hr.loyalty.program">
+                <field name="name">Avior Plus</field>
+            </record>
+
+            <record id="loyalty_program_61" model="hr.loyalty.program">
+                <field name="name">Azal Miles</field>
+            </record>
+
+            <record id="loyalty_program_62" model="hr.loyalty.program">
+                <field name="name">A+</field>
+            </record>
+
+            <record id="loyalty_program_63" model="hr.loyalty.program">
+                <field name="name">Tudo Azul</field>
+            </record>
+
+            <record id="loyalty_program_64" model="hr.loyalty.program">
+                <field name="name">Frequent Flyer Program</field>
+            </record>
+
+            <record id="loyalty_program_65" model="hr.loyalty.program">
+                <field name="name">Bamboo Club</field>
+            </record>
+
+            <record id="loyalty_program_66" model="hr.loyalty.program">
+                <field name="name">FlyerBonus</field>
+            </record>
+
+            <record id="loyalty_program_67" model="hr.loyalty.program">
+                <field name="name">Batik Miles</field>
+            </record>
+
+            <record id="loyalty_program_68" model="hr.loyalty.program">
+                <field name="name">Belavia Leader</field>
+            </record>
+
+            <record id="loyalty_program_69" model="hr.loyalty.program">
+                <field name="name">Gold Points</field>
+            </record>
+
+            <record id="loyalty_program_70" model="hr.loyalty.program">
+                <field name="name">Tashi Miles</field>
+            </record>
+
+            <record id="loyalty_program_71" model="hr.loyalty.program">
+                <field name="name">Biman Loyalty Club</field>
+            </record>
+
+            <record id="loyalty_program_72" model="hr.loyalty.program">
+                <field name="name">BinterMás</field>
+            </record>
+
+            <record id="loyalty_program_73" model="hr.loyalty.program">
+                <field name="name">Blue Skies Club</field>
+            </record>
+
+            <record id="loyalty_program_74" model="hr.loyalty.program">
+                <field name="name">BRA Vänner</field>
+            </record>
+
+            <record id="loyalty_program_75" model="hr.loyalty.program">
+                <field name="name">Executive Club</field>
+            </record>
+
+            <record id="loyalty_program_76" model="hr.loyalty.program">
+                <field name="name">Royal Club</field>
+            </record>
+
+            <record id="loyalty_program_77" model="hr.loyalty.program">
+                <field name="name">FLY MORE</field>
+            </record>
+
+            <record id="loyalty_program_78" model="hr.loyalty.program">
+                <field name="name">Horizons</field>
+            </record>
+
+            <record id="loyalty_program_79" model="hr.loyalty.program">
+                <field name="name">Calm Rewards</field>
+            </record>
+
+            <record id="loyalty_program_80" model="hr.loyalty.program">
+                <field name="name">Star Awards</field>
+            </record>
+
+            <record id="loyalty_program_81" model="hr.loyalty.program">
+                <field name="name">Aurora Rewards</field>
+            </record>
+
+            <record id="loyalty_program_82" model="hr.loyalty.program">
+                <field name="name">Caribbean Miles</field>
+            </record>
+
+            <record id="loyalty_program_83" model="hr.loyalty.program">
+                <field name="name">Asia Miles</field>
+            </record>
+
+            <record id="loyalty_program_84" model="hr.loyalty.program">
+                <field name="name">The Marco Polo Club</field>
+            </record>
+
+            <record id="loyalty_program_85" model="hr.loyalty.program">
+                <field name="name">Sir Turtle Rewards</field>
+            </record>
+
+            <record id="loyalty_program_86" model="hr.loyalty.program">
+                <field name="name">GetGo</field>
+            </record>
+
+            <record id="loyalty_program_87" model="hr.loyalty.program">
+                <field name="name">MyPoints</field>
+            </record>
+
+            <record id="loyalty_program_88" model="hr.loyalty.program">
+                <field name="name">Dynasty Flyer</field>
+            </record>
+
+            <record id="loyalty_program_89" model="hr.loyalty.program">
+                <field name="name">EasternMiles</field>
+            </record>
+
+            <record id="loyalty_program_90" model="hr.loyalty.program">
+                <field name="name">Sky Pearl Club</field>
+            </record>
+
+            <record id="loyalty_program_91" model="hr.loyalty.program">
+                <field name="name">StarMiles</field>
+            </record>
+
+            <record id="loyalty_program_92" model="hr.loyalty.program">
+                <field name="name">ConnectMiles</field>
+            </record>
+
+            <record id="loyalty_program_93" model="hr.loyalty.program">
+                <field name="name">Club Corsair</field>
+            </record>
+
+            <record id="loyalty_program_94" model="hr.loyalty.program">
+                <field name="name">OK Plus</field>
+            </record>
+
+            <record id="loyalty_program_95" model="hr.loyalty.program">
+                <field name="name">DanaMiles</field>
+            </record>
+
+            <record id="loyalty_program_96" model="hr.loyalty.program">
+                <field name="name">SkyMiles</field>
+            </record>
+
+            <record id="loyalty_program_97" model="hr.loyalty.program">
+                <field name="name">---</field>
+            </record>
+
+            <record id="loyalty_program_98" model="hr.loyalty.program">
+                <field name="name">HappinesSMiles</field>
+            </record>
+
+            <record id="loyalty_program_99" model="hr.loyalty.program">
+                <field name="name">EgyptAir Plus</field>
+            </record>
+
+            <record id="loyalty_program_100" model="hr.loyalty.program">
+                <field name="name">Matmid Club</field>
+            </record>
+
+            <record id="loyalty_program_101" model="hr.loyalty.program">
+                <field name="name">Skywards</field>
+            </record>
+
+            <record id="loyalty_program_102" model="hr.loyalty.program">
+                <field name="name">ShebaMiles</field>
+            </record>
+
+            <record id="loyalty_program_103" model="hr.loyalty.program">
+                <field name="name">Etihad Guest</field>
+            </record>
+
+            <record id="loyalty_program_104" model="hr.loyalty.program">
+                <field name="name">Boomerang Club</field>
+            </record>
+
+            <record id="loyalty_program_105" model="hr.loyalty.program">
+                <field name="name">Infinity MileageLands</field>
+            </record>
+
+            <record id="loyalty_program_106" model="hr.loyalty.program">
+                <field name="name">Finnair Plus</field>
+            </record>
+
+            <record id="loyalty_program_107" model="hr.loyalty.program">
+                <field name="name">nasmiles</field>
+            </record>
+
+<!--            <record id="loyalty_program_108" model="hr.loyalty.program">-->
+<!--                <field name="name">Frequent Flyer</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_109" model="hr.loyalty.program">
+                <field name="name">Frontier Miles</field>
+            </record>
+
+            <record id="loyalty_program_110" model="hr.loyalty.program">
+                <field name="name">GarudaMiles</field>
+            </record>
+
+<!--            <record id="loyalty_program_111" model="hr.loyalty.program">-->
+<!--                <field name="name">Smiles</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_112" model="hr.loyalty.program">
+                <field name="name">Green Honors</field>
+            </record>
+
+            <record id="loyalty_program_113" model="hr.loyalty.program">
+                <field name="name">SATA IMAGINE</field>
+            </record>
+
+            <record id="loyalty_program_114" model="hr.loyalty.program">
+                <field name="name">Falconflyer</field>
+            </record>
+
+            <record id="loyalty_program_115" model="hr.loyalty.program">
+                <field name="name">Fortune Wings Club</field>
+            </record>
+
+            <record id="loyalty_program_116" model="hr.loyalty.program">
+                <field name="name">High Flyer Rewards</field>
+            </record>
+
+            <record id="loyalty_program_117" model="hr.loyalty.program">
+                <field name="name">Hawaiian Miles</field>
+            </record>
+
+            <record id="loyalty_program_118" model="hr.loyalty.program">
+                <field name="name">Hunnu Club</field>
+            </record>
+
+            <record id="loyalty_program_119" model="hr.loyalty.program">
+                <field name="name">Iberia Plus</field>
+            </record>
+
+            <record id="loyalty_program_120" model="hr.loyalty.program">
+                <field name="name">Ibom Flyer</field>
+            </record>
+
+            <record id="loyalty_program_121" model="hr.loyalty.program">
+                <field name="name">Saga Club</field>
+            </record>
+
+            <record id="loyalty_program_122" model="hr.loyalty.program">
+                <field name="name">SkyGift</field>
+            </record>
+
+<!--            <record id="loyalty_program_123" model="hr.loyalty.program">-->
+<!--                <field name="name">SkyMiles</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_124" model="hr.loyalty.program">
+                <field name="name">JAL Mileage Bank</field>
+            </record>
+
+            <record id="loyalty_program_125" model="hr.loyalty.program">
+                <field name="name">Jazeerati</field>
+            </record>
+
+            <record id="loyalty_program_126" model="hr.loyalty.program">
+                <field name="name">Refresh Point</field>
+            </record>
+
+            <record id="loyalty_program_127" model="hr.loyalty.program">
+                <field name="name">TrueBlue</field>
+            </record>
+
+            <record id="loyalty_program_128" model="hr.loyalty.program">
+                <field name="name">Juneyao Club</field>
+            </record>
+
+            <record id="loyalty_program_129" model="hr.loyalty.program">
+                <field name="name">Orange Miles</field>
+            </record>
+
+            <record id="loyalty_program_130" model="hr.loyalty.program">
+                <field name="name">Skypass</field>
+            </record>
+
+            <record id="loyalty_program_131" model="hr.loyalty.program">
+                <field name="name">Priority Club</field>
+            </record>
+
+            <record id="loyalty_program_132" model="hr.loyalty.program">
+                <field name="name">Oasis Club</field>
+            </record>
+
+            <record id="loyalty_program_133" model="hr.loyalty.program">
+                <field name="name">MyCompagnie</field>
+            </record>
+
+            <record id="loyalty_program_134" model="hr.loyalty.program">
+                <field name="name">Flamingo Club</field>
+            </record>
+
+            <record id="loyalty_program_135" model="hr.loyalty.program">
+                <field name="name">Champa Muang Lao</field>
+            </record>
+
+            <record id="loyalty_program_136" model="hr.loyalty.program">
+                <field name="name">Viajero Frecuente</field>
+            </record>
+
+            <record id="loyalty_program_137" model="hr.loyalty.program">
+                <field name="name">LATAM Pass</field>
+            </record>
+
+            <record id="loyalty_program_138" model="hr.loyalty.program">
+                <field name="name">Passport Club</field>
+            </record>
+
+            <record id="loyalty_program_139" model="hr.loyalty.program">
+                <field name="name">Clan Loganair</field>
+            </record>
+
+            <record id="loyalty_program_140" model="hr.loyalty.program">
+                <field name="name">Miles &amp; More</field>
+            </record>
+
+            <record id="loyalty_program_141" model="hr.loyalty.program">
+                <field name="name">Mahan &amp; Miles</field>
+            </record>
+
+            <record id="loyalty_program_142" model="hr.loyalty.program">
+                <field name="name">Enrich</field>
+            </record>
+
+            <record id="loyalty_program_143" model="hr.loyalty.program">
+                <field name="name">Malindo Miles</field>
+            </record>
+
+<!--            <record id="loyalty_program_144" model="hr.loyalty.program">-->
+<!--                <field name="name">Royal Club</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_145" model="hr.loyalty.program">
+                <field name="name">Cedar Miles</field>
+            </record>
+
+            <record id="loyalty_program_146" model="hr.loyalty.program">
+                <field name="name">Blue Flyer</field>
+            </record>
+
+            <record id="loyalty_program_147" model="hr.loyalty.program">
+                <field name="name">Blue Sky</field>
+            </record>
+
+            <record id="loyalty_program_148" model="hr.loyalty.program">
+                <field name="name">Imi Loa</field>
+            </record>
+
+            <record id="loyalty_program_149" model="hr.loyalty.program">
+                <field name="name">Sky Smile Club</field>
+            </record>
+
+            <record id="loyalty_program_150" model="hr.loyalty.program">
+                <field name="name">Nok Fan Club</field>
+            </record>
+
+            <record id="loyalty_program_151" model="hr.loyalty.program">
+                <field name="name">Nordwind Club</field>
+            </record>
+
+            <record id="loyalty_program_152" model="hr.loyalty.program">
+                <field name="name">Easy to Fly!</field>
+            </record>
+
+            <record id="loyalty_program_153" model="hr.loyalty.program">
+                <field name="name">Norwegian Reward</field>
+            </record>
+
+            <record id="loyalty_program_154" model="hr.loyalty.program">
+                <field name="name">jasmin</field>
+            </record>
+
+<!--            <record id="loyalty_program_155" model="hr.loyalty.program">-->
+<!--                <field name="name">Smiles</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_156" model="hr.loyalty.program">
+                <field name="name">Xiangyun Club</field>
+            </record>
+
+            <record id="loyalty_program_157" model="hr.loyalty.program">
+                <field name="name">Sindbad</field>
+            </record>
+
+            <record id="loyalty_program_158" model="hr.loyalty.program">
+                <field name="name">Onur Extra</field>
+            </record>
+
+            <record id="loyalty_program_159" model="hr.loyalty.program">
+                <field name="name">BolBol</field>
+            </record>
+
+            <record id="loyalty_program_160" model="hr.loyalty.program">
+                <field name="name">Connecting Rewards</field>
+            </record>
+
+            <record id="loyalty_program_161" model="hr.loyalty.program">
+                <field name="name">Mabuhay Miles</field>
+            </record>
+
+            <record id="loyalty_program_162" model="hr.loyalty.program">
+                <field name="name">Awards + Plus</field>
+            </record>
+
+            <record id="loyalty_program_163" model="hr.loyalty.program">
+                <field name="name">Premier Plus</field>
+            </record>
+
+            <record id="loyalty_program_164" model="hr.loyalty.program">
+                <field name="name">VIPorter</field>
+            </record>
+
+            <record id="loyalty_program_165" model="hr.loyalty.program">
+                <field name="name">PAA Royal</field>
+            </record>
+
+            <record id="loyalty_program_166" model="hr.loyalty.program">
+                <field name="name">Jo’burg Frequent Flyer Programme</field>
+            </record>
+
+<!--            <record id="loyalty_program_167" model="hr.loyalty.program">-->
+<!--                <field name="name">Frequent Flyer</field>-->
+<!--            </record>-->
+
+            <record id="loyalty_program_168" model="hr.loyalty.program">
+                <field name="name">Privilege Club</field>
+            </record>
+
+            <record id="loyalty_program_169" model="hr.loyalty.program">
+                <field name="name">Tianhai Rhyme Club</field>
+            </record>
+
+            <record id="loyalty_program_170" model="hr.loyalty.program">
+                <field name="name">Safar Flyer</field>
+            </record>
+
+            <record id="loyalty_program_171" model="hr.loyalty.program">
+                <field name="name">Royal Skies</field>
+            </record>
+
+            <record id="loyalty_program_172" model="hr.loyalty.program">
+                <field name="name">Royal Plus</field>
+            </record>
+
+            <record id="loyalty_program_173" model="hr.loyalty.program">
+                <field name="name">Dream Miles</field>
+            </record>
+
+            <record id="loyalty_program_174" model="hr.loyalty.program">
+                <field name="name">S7 Priority</field>
+            </record>
+
+            <record id="loyalty_program_175" model="hr.loyalty.program">
+                <field name="name">EuroBonus</field>
+            </record>
+
+            <record id="loyalty_program_176" model="hr.loyalty.program">
+                <field name="name">Alfursan</field>
+            </record>
+
+            <record id="loyalty_program_177" model="hr.loyalty.program">
+                <field name="name">SaudiGulf Club</field>
+            </record>
+
+            <record id="loyalty_program_178" model="hr.loyalty.program">
+                <field name="name">Saurya Saarathi</field>
+            </record>
+
+            <record id="loyalty_program_179" model="hr.loyalty.program">
+                <field name="name">High Flyer Club</field>
+            </record>
+
+            <record id="loyalty_program_180" model="hr.loyalty.program">
+                <field name="name">Golden Panda</field>
+            </record>
+
+            <record id="loyalty_program_181" model="hr.loyalty.program">
+                <field name="name">KrisFlyer</field>
+            </record>
+
+            <record id="loyalty_program_182" model="hr.loyalty.program">
+                <field name="name">Golden Mile</field>
+            </record>
+
+            <record id="loyalty_program_183" model="hr.loyalty.program">
+                <field name="name">Solaseed Smile Club</field>
+            </record>
+
+            <record id="loyalty_program_184" model="hr.loyalty.program">
+                <field name="name">Voyager</field>
+            </record>
+
+            <record id="loyalty_program_185" model="hr.loyalty.program">
+                <field name="name">Rapid Rewards</field>
+            </record>
+
+            <record id="loyalty_program_186" model="hr.loyalty.program">
+                <field name="name">SpiceClub</field>
+            </record>
+
+            <record id="loyalty_program_187" model="hr.loyalty.program">
+                <field name="name">Free Spirit</field>
+            </record>
+
+            <record id="loyalty_program_188" model="hr.loyalty.program">
+                <field name="name">SpringPass</field>
+            </record>
+
+            <record id="loyalty_program_189" model="hr.loyalty.program">
+                <field name="name">FlySmiLes</field>
+            </record>
+
+            <record id="loyalty_program_190" model="hr.loyalty.program">
+                <field name="name">COSMILE</field>
+            </record>
+
+            <record id="loyalty_program_191" model="hr.loyalty.program">
+                <field name="name">Sun Country Rewards</field>
+            </record>
+
+            <record id="loyalty_program_192" model="hr.loyalty.program">
+                <field name="name">SunExpress your benefits</field>
+            </record>
+
+            <record id="loyalty_program_193" model="hr.loyalty.program">
+                <field name="name">Loyal Wings</field>
+            </record>
+
+            <record id="loyalty_program_194" model="hr.loyalty.program">
+                <field name="name">Umbi Umbi Club</field>
+            </record>
+
+            <record id="loyalty_program_195" model="hr.loyalty.program">
+                <field name="name">TAP Miles&amp;Go</field>
+            </record>
+
+            <record id="loyalty_program_196" model="hr.loyalty.program">
+                <field name="name">Royal Orchid Plus</field>
+            </record>
+
+            <record id="loyalty_program_197" model="hr.loyalty.program">
+                <field name="name">Miles&amp;Smiles</field>
+            </record>
+
+            <record id="loyalty_program_198" model="hr.loyalty.program">
+                <field name="name">Miles Plus</field>
+            </record>
+
+            <record id="loyalty_program_199" model="hr.loyalty.program">
+                <field name="name">Fidelys</field>
+            </record>
+
+            <record id="loyalty_program_200" model="hr.loyalty.program">
+                <field name="name">Panorama Club</field>
+            </record>
+
+            <record id="loyalty_program_201" model="hr.loyalty.program">
+                <field name="name">Mileage Plus</field>
+            </record>
+
+            <record id="loyalty_program_202" model="hr.loyalty.program">
+                <field name="name">Wings</field>
+            </record>
+
+            <record id="loyalty_program_203" model="hr.loyalty.program">
+                <field name="name">Sky Star</field>
+            </record>
+
+            <record id="loyalty_program_204" model="hr.loyalty.program">
+                <field name="name">Status</field>
+            </record>
+
+            <record id="loyalty_program_205" model="hr.loyalty.program">
+                <field name="name">UzAirPlus</field>
+            </record>
+
+            <record id="loyalty_program_206" model="hr.loyalty.program">
+                <field name="name">Lotusmiles</field>
+            </record>
+
+            <record id="loyalty_program_207" model="hr.loyalty.program">
+                <field name="name">Flying Club</field>
+            </record>
+
+            <record id="loyalty_program_208" model="hr.loyalty.program">
+                <field name="name">Velocity</field>
+            </record>
+
+            <record id="loyalty_program_209" model="hr.loyalty.program">
+                <field name="name">Club Vistara</field>
+            </record>
+
+            <record id="loyalty_program_210" model="hr.loyalty.program">
+                <field name="name">Vueling Club</field>
+            </record>
+
+            <record id="loyalty_program_211" model="hr.loyalty.program">
+                <field name="name">WestJet Rewards</field>
+            </record>
+
+            <record id="loyalty_program_212" model="hr.loyalty.program">
+                <field name="name">Egret Club</field>
+            </record>
+
+            <record id="loyalty_program_213" model="hr.loyalty.program">
+                <field name="name">Free Flight</field>
+            </record>
+
+            <record id="loyalty_program_214" model="hr.loyalty.program">
+                <field name="name">Sama Club</field>
+            </record>
+
+            <record id="loyalty_program_215" model="hr.loyalty.program">
+                <field name="name">SkyClub</field>
+            </record>
+
+    </data>
+</odoo>
